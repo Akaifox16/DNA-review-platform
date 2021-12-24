@@ -1,7 +1,7 @@
 const Navbar = () => {
     return (
         <div>
-            Enter
+            <h1>DNA</h1>
         </div>
     );
 }

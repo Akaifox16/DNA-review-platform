@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <div>
-            Enter
+            <p>By 7-lnw-JoanSalad Team</p>
         </div>
     );
 }
