@@ -11,6 +11,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  background-color: transparent;
+  border-radius: 20px;
+  
+}
+
 * {
   box-sizing: border-box;
 }

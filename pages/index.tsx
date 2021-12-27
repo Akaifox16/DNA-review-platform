@@ -1,12 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import CommunitySection from '../components/CommunitySection'
+import PostList from '../components/Post'
+import RankingSection from '../components/RankingSection'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <p>This is first page.</p>
+      <PostList />
+      <div>
+        <CommunitySection />
+        <RankingSection />
+      </div>
     </div>
   )
 }
