@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Searchbar from "../Searchbar";
-import styles from '../../styles/Navbar.module.css'
+import styles from '../../styles/Navbar.module.scss'
 import { useLoginContext } from '../../context/LoginContext';
 import { ReactElement } from "react";
 

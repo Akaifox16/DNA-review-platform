@@ -3,7 +3,7 @@ import Head from 'next/head'
 import CommunitySection from '../components/CommunitySection'
 import PostList from '../components/Post'
 import RankingSection from '../components/RankingSection'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
 const Home: NextPage = () => {
   return (

@@ -1,28 +1,21 @@
-const Banner = () => {
-    return (
-        <div>
-            Login
-        </div>
-    )
-}
+import Banner from "../components/Banner";
 
-const LoginForm = () => {
+const register = () => {
     return (
         <div>
-            <Banner />
+            <Banner text='Register' />
             <form >
                 <input type='text' 
                 placeholder="User E-mail"/>
                 <input type='text' 
                 placeholder="password"/>
+                <input type='text' 
+                placeholder="confirmation password"/>
 
                 <button type="submit">Login</button>
-                <p>Don't have account yet?</p>
-                <button type="submit">Create new DNA Account</button>
             </form>
-
         </div>
     );
 }
 
-export default LoginForm;
+export default register;
