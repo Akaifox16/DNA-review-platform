@@ -4,7 +4,7 @@ const PostCard = () => {
     return (
         <div>
             <Image src='/vercel.svg' width={124} height={124}/>
-            <h3>Prouct Name</h3>
+            <h3>Product Name</h3>
             <p>Score</p>
             <p>Reviewer</p>
         </div>
