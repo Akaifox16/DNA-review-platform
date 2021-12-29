@@ -1,17 +1,28 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import Layout from '../components/Layout'
-import { useState } from 'react'
+import { ReactElement, ReactNode, useState } from 'react'
 import { LoginContext } from '../context/LoginContext'
+import { NextPage } from 'next'
 
-function MyApp({ Component, pageProps }: AppProps) {
+type PageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: PageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const [isLogin, setLogin] = useState(false)
+  const getLayout = Component.getLayout ?? ((page)=> page)
 
   return (
     <LoginContext.Provider value={ { isLogin, setLogin } }>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {
+        getLayout(
+          <Component {...pageProps} />
+        )
+      }
     </LoginContext.Provider>
   )
 }

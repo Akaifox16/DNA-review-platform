@@ -1,11 +1,14 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
-import CommunitySection from '../components/CommunitySection'
+import { ReactElement } from 'react'
+
+import Layout from '../components/Layout'
 import PostList from '../components/Post'
+import CommunitySection from '../components/CommunitySection'
 import RankingSection from '../components/RankingSection'
+
 import styles from '../styles/Home.module.scss'
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div className={styles.container}>
       <PostList />
@@ -14,6 +17,14 @@ const Home: NextPage = () => {
         <RankingSection />
       </div>
     </div>
+  )
+}
+
+Home.getLayout = (page: ReactElement)=> {
+  return (
+    <Layout>
+      {page}
+    </Layout>
   )
 }
 

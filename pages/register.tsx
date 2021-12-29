@@ -1,6 +1,8 @@
 import Banner from "../components/Banner";
 
 const register = () => {
+    
+
     return (
         <div>
             <Banner text='Register' />
