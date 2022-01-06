@@ -43,7 +43,7 @@ const Navbar = () => {
             }
             
             {!isLogin && 
-                <UserImg link='/login'/>
+                <Link href='/login'>Login/Signup</Link>
             }
         </div>
     );

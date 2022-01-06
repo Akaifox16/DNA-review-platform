@@ -32,7 +32,7 @@ const Home = () => {
 Home.getLayout = (page: ReactElement)=> {
   return (
     <Layout>
-      {page}
+      { page }
     </Layout>
   )
 }
