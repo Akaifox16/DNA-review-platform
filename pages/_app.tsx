@@ -1,4 +1,5 @@
 import '../styles/globals.scss'
+import 'bootstrap/dist/css/bootstrap.css'
 import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode, useState } from 'react'
 import { LoginContext } from '../context/LoginContext'
