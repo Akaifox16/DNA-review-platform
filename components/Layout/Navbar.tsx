@@ -4,6 +4,7 @@ import Searchbar from "../Searchbar";
 import styles from '../../styles/Navbar.module.scss'
 import { useLoginContext } from '../../hooks';
 import { ReactElement } from "react";
+import { Dropdown } from "..";
 
 const UserImg:({link}:{link:string})=>ReactElement = ({ link }) => {
     return (
@@ -38,8 +39,16 @@ const Navbar = () => {
             </div>
             }
             
-            {isLogin && 
-                <UserImg link='/user'/>
+            {isLogin &&
+                <Dropdown name= "user">
+                    <li>
+                        <a
+                        className="dropdown-item"
+                        href="#">
+                            logout
+                        </a>
+                    </li>
+                </Dropdown>
             }
             
             {!isLogin && 

@@ -14,6 +14,8 @@ const Dropdown:DropdownProps = ({ name, children}) => {
             <button
             className="btn btn-primary dropdown-toggle"
             type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
             >
                 { name }
             </button>
