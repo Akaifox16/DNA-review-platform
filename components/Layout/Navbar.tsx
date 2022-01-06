@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Searchbar from "../Searchbar";
 import styles from '../../styles/Navbar.module.scss'
-import { useLoginContext } from '../../context/LoginContext';
+import { useLoginContext } from '../../hooks';
 import { ReactElement } from "react";
 
 const UserImg:({link}:{link:string})=>ReactElement = ({ link }) => {
@@ -25,7 +25,11 @@ const Navbar = () => {
         <div
             className={styles.container}
         >
-            <Link href='/'><button className={ styles.logo }>DNA</button></Link>
+            <Link href='/'>
+                <button 
+                className={ styles.logo }
+                >DNA</button>
+            </Link>
             <Searchbar />
             { isLogin &&
             <div>

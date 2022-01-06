@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from 'axios'
 import { API_URL } from "../config";
 import { REGISTER_QUERY } from "../query";
-import { useLoginContext } from "../context/LoginContext";
+import { useLoginContext } from "../hooks";
 import { useRouter } from "next/router";
 
 const register = () => {

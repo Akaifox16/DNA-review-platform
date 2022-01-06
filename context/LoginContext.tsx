@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext } from 'react'
 
 export type LoginContent = {
     isLogin: boolean
@@ -9,5 +9,3 @@ export const LoginContext = createContext<LoginContent>({
     isLogin: false,
     setLogin: () => {},
 })
-
-export const useLoginContext = () => useContext(LoginContext)
