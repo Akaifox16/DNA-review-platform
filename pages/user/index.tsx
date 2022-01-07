@@ -13,7 +13,14 @@ const UserPage = () => {
 
     return (
         <div>
-            Welcome {name}.
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
+            <p>Welcome {name}.</p>
         </div>
     );
 }

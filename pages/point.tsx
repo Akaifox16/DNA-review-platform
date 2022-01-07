@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
-import { Layout } from "../../components";
+import { Layout } from "../components";
 
-const Post = () => {
+const PointShop = () => {
     return (
         <div>
-            This is your post
+            this is Point Shop
         </div>
     );
 }
 
-Post.getLayout = (page: ReactElement) => {
+PointShop.getLayout = (page:ReactElement) => {
     return (
         <Layout>
             { page }
@@ -17,4 +17,4 @@ Post.getLayout = (page: ReactElement) => {
     )
 }
 
-export default Post;
+export default PointShop;
