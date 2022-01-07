@@ -1,8 +1,17 @@
 export const REGISTER_QUERY = `
 mutation($user: UserCreateInput!){
     register(user: $user) {
-            token
-            username
-        }
+        token
+        username
     }
+}
+`
+
+export const LOGIN_QUERY = `
+mutation($user: UserLoginInput!){
+  login(user: $user) {
+    token
+    username
+  }
+}
 `

@@ -3,6 +3,7 @@ import { ReactElement, useEffect } from 'react'
 
 
 import { Layout, Posts, CommunitySection, RankingSection } from '../components'
+import { TOKEN_KEY } from '../config'
 import { useLoginContext, useStorage } from '../hooks'
 
 
@@ -12,7 +13,7 @@ const Home = () => {
   const { setLogin } = useLoginContext()
   const { getItem } = useStorage()
   useEffect(() => {
-    const token = getItem('token')
+    const token = getItem(TOKEN_KEY)
     if(token){
       setLogin(true)
     }

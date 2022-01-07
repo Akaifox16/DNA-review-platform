@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Searchbar from "../Searchbar";
 import styles from '../../styles/Navbar.module.scss'
-import { useLoginContext } from '../../hooks';
+import { useLoginContext, useStorage } from '../../hooks';
 import { ReactElement } from "react";
 import { Dropdown } from "react-bootstrap";
+import { TOKEN_KEY } from "../../config";
 
 const UserImg:({link}:{link:string})=>ReactElement = ({ link }) => {
     return (
@@ -21,6 +22,7 @@ const UserImg:({link}:{link:string})=>ReactElement = ({ link }) => {
 
 const Navbar = () => {
     const { isLogin } = useLoginContext()
+    const { removeItem } = useStorage()
 
     return (
         <div
@@ -52,17 +54,15 @@ const Navbar = () => {
                             profile
                         </Dropdown.Item>
                         <Dropdown.Item
-                        href="">
+                        href="/"
+                        onClick={ e => {
+                            e.preventDefault()
+                            removeItem(TOKEN_KEY)
+                        }}>
+
                             logout
                         </Dropdown.Item>
                     </Dropdown.Menu>
-                    <li>
-                        <a
-                        className="dropdown-item"
-                        href="#">
-                            logout
-                        </a>
-                    </li>
                 </Dropdown>
             }
             

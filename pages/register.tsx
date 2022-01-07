@@ -1,7 +1,7 @@
 import { Banner, Button } from "../components";
 import { useState } from "react";
 import axios from 'axios'
-import { API_URL } from "../config";
+import { API_URL, TOKEN_KEY } from "../config";
 import { REGISTER_QUERY } from "../query";
 import { useLoginContext } from "../hooks";
 import { useRouter } from "next/router";
@@ -26,7 +26,7 @@ const register = () => {
                     console.error(res.data.errors.messages)
                     return
                 }
-                sessionStorage.setItem('token',JSON.stringify(res.data.data.register))
+                sessionStorage.setItem(TOKEN_KEY,JSON.stringify(res.data.data.register))
                 setLogin(true)
                 router.push('/')
             }).catch(e => {
@@ -38,7 +38,7 @@ const register = () => {
     return (
         <div>
             <Banner text='Register' />
-            <form onSubmit={signin} >
+            <form onSubmit={ signin } >
                 <input type='text' 
                 placeholder="Username"
                 onChange={e => {
