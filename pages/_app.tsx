@@ -1,9 +1,11 @@
-import '../styles/globals.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode, useState } from 'react'
+
 import { LoginContext } from '../context'
-import { NextPage } from 'next'
+
+import '../styles/globals.scss'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 type PageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

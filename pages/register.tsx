@@ -1,37 +1,20 @@
 import { Banner, Button } from "../components";
 import { useState } from "react";
-import axios from 'axios'
-import { API_URL, TOKEN_KEY } from "../config";
-import { REGISTER_QUERY } from "../query";
-import { useLoginContext } from "../hooks";
-import { useRouter } from "next/router";
+import { useRegister } from "../hooks";
+
 
 const register = () => {
     const [user,setUser] = useState({name: "",
                                     email: "",
                                     password: "",})
     const [enable, setEnable] = useState(false)
-    const { setLogin } = useLoginContext()
-    const router = useRouter()
     
     const signin = (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-
+        const register = useRegister(user)
 
         if(enable){
-            axiosReq(user)
-            .then(res => {
-                console.log(res.data)
-                if(res.data.data.register === null) {
-                    console.error(res.data.errors.messages)
-                    return
-                }
-                sessionStorage.setItem(TOKEN_KEY,JSON.stringify(res.data.data.register))
-                setLogin(true)
-                router.push('/')
-            }).catch(e => {
-                console.error(e)
-            })
+            register()
         }
     }    
 
@@ -71,30 +54,6 @@ const register = () => {
             </form>
         </div>
     );
-}
-
-type RegisterInput = {
-    name: string,
-    email: string,
-    password: string,
-}
-
-const axiosReq = (user:RegisterInput) => {
-    const headers = {
-        "content-type": "application/json" 
-    }
-
-    return axios({
-        url: API_URL,
-        method: 'post',
-        headers,
-        data:{
-            query: REGISTER_QUERY,
-            variables:{
-                user
-            }
-        }
-    })
 }
 
 export default register;

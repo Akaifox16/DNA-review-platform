@@ -1,23 +1,12 @@
 import Head from 'next/head'
-import { ReactElement, useEffect } from 'react'
 
-
-import { Layout, Posts, CommunitySection, RankingSection } from '../components'
-import { TOKEN_KEY } from '../config'
-import { useLoginContext, useStorage } from '../hooks'
-
+import { Posts, CommunitySection, RankingSection } from '../components'
+import { useDetectUser, useLayout } from '../hooks'
 
 import styles from '../styles/Home.module.scss'
 
 const Home = () => {
-  const { setLogin } = useLoginContext()
-  const { getItem } = useStorage()
-  useEffect(() => {
-    const token = getItem(TOKEN_KEY)
-    if(token){
-      setLogin(true)
-    }
-  }, [])
+  useDetectUser()
 
   return (
     <div className={styles.container}>
@@ -30,12 +19,6 @@ const Home = () => {
   )
 }
 
-Home.getLayout = (page: ReactElement)=> {
-  return (
-    <Layout>
-      { page }
-    </Layout>
-  )
-}
+Home.getLayout = useLayout()
 
 export default Home

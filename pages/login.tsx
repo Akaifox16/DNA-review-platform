@@ -1,38 +1,20 @@
 import { useState } from "react";
 import Link from "next/link";
-import axios from "axios"
 
-import { API_URL, TOKEN_KEY } from "../config"
+import { TOKEN_KEY } from "../config"
 import { Banner } from "../components";
-import { LOGIN_QUERY } from "../query";
-import { useRouter } from "next/router";
-import { useLoginContext } from "../hooks";
+import { useLogin } from "../hooks";
 
 const login = () => {
-    const [user, setUser] = useState<LoginInput>({
+    const [user, setUser] = useState({
         email: "",
         password: ""
     })
-    const router = useRouter()
-    const { setLogin } = useLoginContext()
 
     const login = (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-
-        axiosReq(user)
-        .then(res => {
-            console.log(res.data)
-            if(res.data.data.login === null) {
-                console.error(res.data.errors.messages)
-                return
-            }
-            sessionStorage.setItem(TOKEN_KEY,JSON.stringify(res.data.data.login))
-            setLogin(true)
-            router.push('/')
-        })
-        .catch(e => {
-            console.error(e)
-        })
+        const login = useLogin(user)
+        login()
     }
 
     return (
@@ -59,29 +41,6 @@ const login = () => {
             </form>
         </div>
     );
-}
-
-type LoginInput = {
-    email:string
-    password:string
-}
-
-const axiosReq = (user: LoginInput) => {
-    const headers = {
-        "content-type": "application/json" 
-    }
-
-    return axios({
-        url: API_URL,
-        method: 'post',
-        headers,
-        data:{
-            query: LOGIN_QUERY,
-            variables:{
-                user
-            }
-        }
-    })
 }
 
 export default login;

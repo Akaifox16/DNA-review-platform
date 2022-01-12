@@ -59,7 +59,6 @@ const Navbar = () => {
                             e.preventDefault()
                             removeItem(TOKEN_KEY)
                         }}>
-
                             logout
                         </Dropdown.Item>
                     </Dropdown.Menu>

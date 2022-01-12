@@ -1,5 +1,4 @@
-import { ReactElement } from "react";
-import { Layout } from "../../components";
+import { useLayout } from "../../hooks";
 
 const Post = () => {
     return (
@@ -9,12 +8,6 @@ const Post = () => {
     );
 }
 
-Post.getLayout = (page: ReactElement) => {
-    return (
-        <Layout>
-            { page }
-        </Layout>
-    )
-}
+Post.getLayout = useLayout()
 
 export default Post;

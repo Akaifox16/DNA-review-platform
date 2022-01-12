@@ -1,15 +1,7 @@
-import { ReactElement, useEffect, useState } from "react";
-import { Layout } from "../../components";
-import { useStorage } from "../../hooks";
+import { useLayout, useUsername } from "../../hooks";
 
 const UserPage = () => {
-    const { getItem } = useStorage()
-    const [name,setName] = useState("")
-    
-    useEffect(() => {
-        const token = getItem('token')
-        setName(JSON.parse(token).username)
-    }, [])
+    const name = useUsername()
 
     return (
         <div>
@@ -25,12 +17,6 @@ const UserPage = () => {
     );
 }
 
-UserPage.getLayout = (page: ReactElement) => {
-    return (
-        <Layout>
-            { page }
-        </Layout>
-    )
-}
+UserPage.getLayout = useLayout()
 
 export default UserPage;

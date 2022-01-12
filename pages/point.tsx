@@ -1,5 +1,4 @@
-import { ReactElement } from "react";
-import { Layout } from "../components";
+import { useLayout } from "../hooks";
 
 const PointShop = () => {
     return (
@@ -9,12 +8,6 @@ const PointShop = () => {
     );
 }
 
-PointShop.getLayout = (page:ReactElement) => {
-    return (
-        <Layout>
-            { page }
-        </Layout>
-    )
-}
+PointShop.getLayout = useLayout()
 
 export default PointShop;
