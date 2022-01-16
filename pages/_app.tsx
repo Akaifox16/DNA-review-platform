@@ -16,8 +16,8 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const [isLogin, setLogin] = useState(false)
-  const getLayout = Component.getLayout ?? ((page)=> page)
+  const [isLogin, setLogin] = useState(false);
+  const getLayout = Component.getLayout ?? ((page)=> page);
 
   return (
     <LoginContext.Provider value={ { isLogin, setLogin } }>
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         )
       }
     </LoginContext.Provider>
-  )
+  ) ;
 }
 
-export default MyApp
+export default MyApp ;

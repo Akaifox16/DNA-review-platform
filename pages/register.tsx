@@ -1,20 +1,21 @@
 import { Banner, Button } from "../components";
 import { useState } from "react";
 import { useRegister } from "../hooks";
-
+import { useRouter } from "next/router";
 
 const register = () => {
     const [user,setUser] = useState({name: "",
                                     email: "",
-                                    password: "",})
-    const [enable, setEnable] = useState(false)
-    
-    const signin = (e: { preventDefault: () => void; }) => {
-        e.preventDefault()
-        const register = useRegister(user)
+                                    password: "",}) ;
+    const [enable, setEnable] = useState(false) ;
+    const router = useRouter() ;
 
+    const signin = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault() ;
+        
         if(enable){
-            register()
+            const complete = await useRegister(user) ;
+            if(complete) router.push('/') ;
         }
     }    
 

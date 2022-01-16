@@ -1,7 +1,6 @@
-import { useRouter } from "next/router"
-import { useLoginContext, useStorage, useAxios } from "."
-import { TOKEN_KEY } from "../config"
-import { REGISTER_QUERY } from "../query"
+import { useStorage, useAxios, useLoginContext } from ".";
+import { TOKEN_KEY } from "../config";
+import { REGISTER_QUERY } from "../query";
 
 type RegisterInput = {
     name: string,
@@ -9,25 +8,18 @@ type RegisterInput = {
     password: string,
 }
 
-const useRegister = (data:RegisterInput) => {
-    // const { setLogin } = useLoginContext()
-    const { setItem } = useStorage()
-    const router = useRouter()
+const useRegister = async (data:RegisterInput) => {
+    const { setItem } = useStorage();
+    const { setLogin } = useLoginContext();
 
-    return () => {
-        useAxios(REGISTER_QUERY, data, false)
-        .then( res => {
-            if(res.data.data.register === null) {
-                console.error(res.data.errors.messages)
-                return
-            }
-            setItem(TOKEN_KEY, JSON.stringify(res.data.data.register) ,'session')
-            router.push('/')
-        })
-        .catch( e => {
-            console.error(e)
-        })
+    const res = await useAxios(REGISTER_QUERY, data, false);
+    if(res.data.data.register === null) {
+        console.error(res.data.errors.messages);
+        return false;
     }
+    setLogin(true);
+    setItem(TOKEN_KEY, JSON.stringify(res.data.data.register) ,'session');
+    return true;
 }
 
-export default useRegister
+export default useRegister;

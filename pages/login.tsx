@@ -1,20 +1,21 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import { TOKEN_KEY } from "../config"
 import { Banner } from "../components";
 import { useLogin } from "../hooks";
+import { useRouter } from "next/router";
 
 const login = () => {
     const [user, setUser] = useState({
         email: "",
         password: ""
-    })
+    }) ;
+    const router = useRouter() ;
 
-    const login = (e: { preventDefault: () => void; }) => {
-        e.preventDefault()
-        const login = useLogin(user)
-        login()
+    const login = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault() ;
+        const complete = await useLogin(user) ;
+        if( complete ) router.push('/') ;
     }
 
     return (

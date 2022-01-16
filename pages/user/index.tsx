@@ -1,7 +1,7 @@
 import { useLayout, useUsername } from "../../hooks";
 
 const UserPage = () => {
-    const name = useUsername()
+    const name = useUsername();
 
     return (
         <div>
@@ -17,6 +17,6 @@ const UserPage = () => {
     );
 }
 
-UserPage.getLayout = useLayout()
+UserPage.getLayout = useLayout();
 
 export default UserPage;

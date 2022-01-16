@@ -5,7 +5,7 @@ mutation($user: UserCreateInput!){
         username
     }
 }
-`
+` ;
 
 export const LOGIN_QUERY = `
 mutation($user: UserLoginInput!){
@@ -14,4 +14,13 @@ mutation($user: UserLoginInput!){
     username
   }
 }
-`
+` ;
+
+export const CREATE_POST_QUERY = `
+mutation($post: PostCreateInput!){
+  createPost(post: $post) {
+    slug
+    content
+  }
+}
+` ;

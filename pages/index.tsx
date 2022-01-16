@@ -1,12 +1,12 @@
-import Head from 'next/head'
+import Head from 'next/head' ;
 
-import { Posts, CommunitySection, RankingSection } from '../components'
-import { useDetectUser, useLayout } from '../hooks'
+import { Posts, CommunitySection, RankingSection } from '../components' ;
+import { useDetectUser, useLayout } from '../hooks' ;
 
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss' ;
 
 const Home = () => {
-  useDetectUser()
+  useDetectUser() ;
 
   return (
     <div className={styles.container}>
@@ -16,9 +16,9 @@ const Home = () => {
         <RankingSection />
       </div>
     </div>
-  )
+  ) ;
 }
 
-Home.getLayout = useLayout()
+Home.getLayout = useLayout() ;
 
-export default Home
+export default Home ;

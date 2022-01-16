@@ -1,16 +1,18 @@
-import { useEffect } from "react"
-import { useLoginContext, useStorage } from "."
-import { TOKEN_KEY } from "../config"
+import { useEffect } from "react";
+import { useLoginContext, useStorage } from ".";
+import { TOKEN_KEY } from "../config";
 
 const useDetectUser = () => {
-    const { setLogin } = useLoginContext()
-    const { getItem } = useStorage()
+    const { setLogin } = useLoginContext();
+    const { getItem } = useStorage();
     useEffect(() => {
-        const token = getItem(TOKEN_KEY, 'session')
+        const token = getItem(TOKEN_KEY, 'session');
         if(token){
-            setLogin(true)
+            setLogin(true);
+        }else{
+            setLogin(false);
         }
-    }, [])
+    }, []);
 }
 
-export default useDetectUser
+export default useDetectUser;

@@ -5,7 +5,7 @@ type ButtonProps = {
     type: "button" | "submit" | "reset" | undefined
     enable?: boolean
     onClick?: MouseEventHandler<HTMLButtonElement>
-}
+};
 
 const Button = (props:ButtonProps) => {
 

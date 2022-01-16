@@ -4,7 +4,7 @@ type BannerProps = ({
     text
 }:{
     text: String
-}) => ReactElement
+}) => ReactElement;
 
 const Banner:BannerProps = ({ text }) => {
     return (

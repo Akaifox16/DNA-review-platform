@@ -3,11 +3,24 @@ import { useLayout } from "../../hooks";
 const Post = () => {
     return (
         <div>
-            This is your post
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <p>This is your post</p>
+            <button > new Post </button>
         </div>
     );
 }
 
-Post.getLayout = useLayout()
+Post.getLayout = useLayout();
 
 export default Post;

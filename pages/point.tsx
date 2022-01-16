@@ -8,6 +8,6 @@ const PointShop = () => {
     );
 }
 
-PointShop.getLayout = useLayout()
+PointShop.getLayout = useLayout();
 
 export default PointShop;
