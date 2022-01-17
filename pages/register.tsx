@@ -1,28 +1,24 @@
-import { Banner, Button } from "../components";
-import { useState } from "react";
-import { useRegister } from "../hooks";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+
+import { useRegister } from "../hooks";
+import { Banner } from "../components";
 
 const register = () => {
     const [user,setUser] = useState({name: "",
                                     email: "",
                                     password: "",}) ;
     const [enable, setEnable] = useState(false) ;
-    const router = useRouter() ;
-
-    const signin = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault() ;
-        
-        if(enable){
-            const complete = await useRegister(user) ;
-            if(complete) router.push('/') ;
-        }
-    }    
+    const signin = useRegister(user);
 
     return (
         <div>
             <Banner text='Register' />
-            <form onSubmit={ signin } >
+            <form onSubmit={e => {
+                e.preventDefault();
+                signin();
+            } } >
                 <input type='text' 
                 placeholder="Username"
                 onChange={e => {
@@ -51,7 +47,7 @@ const register = () => {
                     }
                 }} />
                 
-                <Button name={"Register"} type={"submit"}/>
+                <Button className="success" type="submit" disabled={!enable} >Register</Button>
             </form>
         </div>
     );

@@ -1,27 +1,26 @@
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 import Link from "next/link";
 
 import { Banner } from "../components";
 import { useLogin } from "../hooks";
-import { useRouter } from "next/router";
 
 const login = () => {
     const [user, setUser] = useState({
         email: "",
         password: ""
     }) ;
-    const router = useRouter() ;
+    const login = useLogin(user);
 
-    const login = async (e: { preventDefault: () => void; }) => {
+    const submit = (e: { preventDefault: () => void; }) => {
         e.preventDefault() ;
-        const complete = await useLogin(user) ;
-        if( complete ) router.push('/') ;
+        login();
     }
 
     return (
         <div>
             <Banner text='Login' />
-            <form onSubmit={ login } >
+            <form onSubmit={ submit } >
                 <input type='text' 
                 placeholder="User E-mail"
                 onChange={e => {
@@ -34,10 +33,10 @@ const login = () => {
                 }}
                 />
 
-                <button type="submit">Login</button>
+                <Button className="success" >Login</Button>
                 <p>Don't have account yet?</p>
                 <Link href='/register'>
-                    <button type="submit">Create new DNA Account</button>
+                    <Button className="outline-success" >Create new DNA Account</Button>
                 </Link>
             </form>
         </div>

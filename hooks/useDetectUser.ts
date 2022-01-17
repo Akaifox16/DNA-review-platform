@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLoginContext, useStorage } from ".";
+import { useStorage, useLoginContext } from ".";
 import { TOKEN_KEY } from "../config";
 
 const useDetectUser = () => {
