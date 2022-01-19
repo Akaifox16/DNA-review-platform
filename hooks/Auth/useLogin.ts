@@ -14,6 +14,8 @@ const useLogin = (data:LoginInput) => {
     const router = useRouter();
 
     return () => {
+
+        // console.log('login');
         useAxios(LOGIN_QUERY, {user: data}, false)
         .then(res => {
             if( res.data.data.login === null){

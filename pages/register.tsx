@@ -29,11 +29,7 @@ const register = () => {
             <Card.Body>
                 <Card.Title><h1>Register</h1></Card.Title>
                 <div className="mx-md-5" >
-                    <Form 
-                    onSubmit={ e => {
-                        e.preventDefault();
-                        signin();
-                    } }>
+                    <Form>
                         <FloatingLabel
                             controlId="floatingInput"
                             label="Username"
@@ -95,6 +91,10 @@ const register = () => {
                     type= "submit" 
                     size = "lg" 
                     disabled={ disable }
+                    onClick={e => {
+                        e.preventDefault()
+                        signin();
+                    }}
                     >
                         Register
                     </Button>

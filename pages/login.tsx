@@ -11,11 +11,6 @@ const login = () => {
     }) ;
     const login = useLogin(user);
     const { alert } = useAlert();
-
-    const submit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault() ;
-        login();
-    }
     
     return (            
     <div className="m-5">
@@ -33,8 +28,7 @@ const login = () => {
             <Card.Body>
                 <Card.Title><h1>Login</h1></Card.Title>
                 <div className="mx-md-5" >
-                    <Form 
-                    onSubmit={ submit }>
+                    <Form>
                         <FloatingLabel
                             controlId="floatingInput"
                             label="Email"
@@ -66,7 +60,11 @@ const login = () => {
                     <Button 
                     variant="success" 
                     type= "submit" 
-                    size = "lg" >
+                    size = "lg" 
+                    onClick={e => {
+                        e.preventDefault();
+                        login();
+                    }}>
                         Login
                     </Button>
                     {' '}
