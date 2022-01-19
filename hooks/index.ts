@@ -5,6 +5,7 @@ export { default as useAxios } from './useAxios';
 export { default as useLayout } from './useLayout';
 export { default as useDetectUser } from './useDetectUser';
 export { default as useUsername } from './useUsername';
+export { default as useAlert } from './useAlert';
 
 // Auth
 export { default as useRegister } from './Auth/useRegister';

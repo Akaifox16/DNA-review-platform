@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ReactElement } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 
 type CardProps = ({
     name
@@ -9,10 +10,19 @@ type CardProps = ({
 
 const Card: CardProps = ({ name }) => {
     return (
-        <div>
-            <Image src='/favicon.ico' width={32} height={32} />
-            <p>{ name }</p>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <Image 
+                    src='/favicon.ico' 
+                    width={32} 
+                    height={32} />
+                </Col>
+                <Col>
+                    <p>{ name }</p>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

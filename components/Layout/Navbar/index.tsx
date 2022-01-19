@@ -18,22 +18,28 @@ const Navbar = () => {
                         <Button className="secondary" >DNA</Button>
                     </Link>
                 </Col>
+                <Col xs={6}>
                     <Searchbar />   
+                </Col>
                 <Col>
-                    <div>
-                        <Link href='/post'>
-                            <Button 
-                            className="secondary" >
-                                Posts
-                            </Button>
-                        </Link>
+                    <Row>
+                        <Col>
+                            <Link href='/post'>
+                                <Button 
+                                className="secondary" >
+                                    Posts
+                                </Button>
+                            </Link>
+                        </Col>
+                        <Col>
                         <Link href='/point'>
                             <Button 
                             className="secondary" >
                                 Points
                             </Button>
                         </Link>
-                    </div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col>
                     {isLogin &&

@@ -1,4 +1,5 @@
 import Head from 'next/head' ;
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { Posts, CommunitySection, RankingSection } from '../components' ;
 import { useDetectUser, useLayout } from '../hooks' ;
@@ -9,13 +10,21 @@ const Home = () => {
   useDetectUser() ;
 
   return (
-    <div className={styles.container}>
-      <Posts />
-      <div>
-        <CommunitySection />
-        <RankingSection />
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Posts />
+        </Col>
+        <Col>
+          <Row>
+            <CommunitySection />
+          </Row>
+          <Row>
+            <RankingSection />
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   ) ;
 }
 

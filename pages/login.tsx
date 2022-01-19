@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form, Card, Alert, FloatingLabel } from "react-bootstrap";
 import Link from "next/link";
 
-import { Banner } from "../components";
-import { useLogin } from "../hooks";
+import { useAlert, useLogin } from "../hooks";
 
 const login = () => {
     const [user, setUser] = useState({
@@ -11,35 +10,82 @@ const login = () => {
         password: ""
     }) ;
     const login = useLogin(user);
+    const { alert } = useAlert();
 
     const submit = (e: { preventDefault: () => void; }) => {
         e.preventDefault() ;
         login();
     }
-
-    return (
-        <div>
-            <Banner text='Login' />
-            <form onSubmit={ submit } >
-                <input type='text' 
-                placeholder="User E-mail"
-                onChange={e => {
-                    setUser({ ...user, email: e.target.value })
-                }}/>
-                <input type='text' 
-                placeholder="password"
-                onChange={e => {
-                    setUser({ ...user, password: e.target.value })
-                }}
-                />
-
-                <Button className="success" >Login</Button>
-                <p>Don't have account yet?</p>
-                <Link href='/register'>
-                    <Button className="outline-success" >Create new DNA Account</Button>
-                </Link>
-            </form>
-        </div>
+    
+    return (            
+    <div className="m-5">
+        {
+            alert.show && alert.success &&<Alert  variant="success">
+            {alert.message}
+            </Alert>
+        }
+        {
+            alert.show && !alert.success && <Alert  variant="danger">
+            {alert.message}
+            </Alert>
+        }
+        <Card className="text-center">
+            <Card.Body>
+                <Card.Title><h1>Login</h1></Card.Title>
+                <div className="mx-md-5" >
+                    <Form 
+                    onSubmit={ submit }>
+                        <FloatingLabel
+                            controlId="floatingInput"
+                            label="Email"
+                            className="mb-3" >
+                            <Form.Control 
+                            type="email" 
+                            placeholder="Email" 
+                            onChange={
+                                e =>{
+                                    setUser({...user, email: e.target.value});
+                                }
+                            }/>
+                        </FloatingLabel>
+                        <FloatingLabel 
+                        controlId="floatingPassword" 
+                        label="Password">
+                            <Form.Control 
+                            type="password" 
+                            placeholder="Password" 
+                            onChange={
+                                e =>{
+                                    setUser({...user, password: e.target.value})
+                                }
+                            }/>
+                        </FloatingLabel>
+                    </Form>
+                </div>
+                <div className="m-3">
+                    <Button 
+                    variant="success" 
+                    type= "submit" 
+                    size = "lg" >
+                        Login
+                    </Button>
+                    {' '}
+                    <Link href='/'>
+                        <Button 
+                        variant="secondary"
+                        size="lg">
+                            Back
+                        </Button>
+                    </Link>
+                </div>
+                <div className="m-3">
+                    <Link href="/register">
+                        Don't have account yet?
+                    </Link>
+                </div>
+            </Card.Body>
+        </Card>
+    </div>
     );
 }
 

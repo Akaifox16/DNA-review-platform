@@ -1,13 +1,20 @@
 import Image from "next/image";
+import { Col, Container, Row } from "react-bootstrap";
 
 const PostCard = () => {
     return (
-        <div>
-            <Image src='/vercel.svg' width={124} height={124}/>
-            <h3>Product Name</h3>
-            <p>Score</p>
-            <p>Reviewer</p>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                <Image src='/vercel.svg' width={124} height={124}/>
+                </Col>
+                <Col>
+                    <Row>Product Name</Row>
+                    <Row>Score</Row>
+                    <Row>Reviewer</Row>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
