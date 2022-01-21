@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { useAlert, useLogin } from "../hooks";
 
-const login = () => {
+const Login = () => {
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -87,4 +87,4 @@ const login = () => {
     );
 }
 
-export default login;
+export default Login;

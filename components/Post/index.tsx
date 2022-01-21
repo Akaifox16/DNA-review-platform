@@ -1,15 +1,21 @@
+import { PostsDetailProps } from "../../lib/type";
 import PostCard from "./PostCard";
 
-const PostList = () => {
+const PostList = ({ postsDetail }:PostsDetailProps) => {
     return (
         <div>
             <ul>
-                <PostCard />
-                <PostCard />
-                <PostCard />
+                {
+                    postsDetail.map(post => {
+                        const { id, title, owner} = post
+                        return <PostCard id={id} title={title} owner={owner} />
+                    })
+                }
             </ul>
         </div>
     );
 }
+
+
 
 export default PostList;

@@ -1,3 +1,15 @@
+export const POSTS_QUERY = `
+query{
+  posts {
+    id
+    slug
+    owner {
+      name
+    }
+  }
+}
+`;
+
 export const REGISTER_QUERY = `
 mutation($user: UserCreateInput!){
     register(user: $user) {

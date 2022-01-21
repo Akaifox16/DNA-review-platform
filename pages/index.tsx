@@ -1,19 +1,22 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { Posts, CommunitySection, RankingSection } from '../components' ;
-import { useDetectUser, useLayout } from '../hooks' ;
+import { useDetectUser, useLayout, useAxios } from '../hooks' ;
+import { POSTS_QUERY } from "../lib/query";
+import { PostsDetailProps, PostsResponse } from '../lib/type';
 
 import styles from '../styles/Home.module.scss' ;
 
-const Home = () => {
+const Home = ({ postsDetail }:PostsDetailProps ) => {
   useDetectUser() ;
 
   return (
     <Container>
       <Row>
         <Col>
-          <Posts />
+          <Posts postsDetail={ postsDetail } />
         </Col>
         <Col>
           <Row>
@@ -27,6 +30,23 @@ const Home = () => {
     </Container>
   ) ;
 }
+
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data }: PostsResponse =  await useAxios(POSTS_QUERY, {} , false);
+  const postsDetail = data.data.posts.map(post => {
+      const { slug, owner: { name }, id } = post
+
+      return { id, title: slug, owner: name };
+  })
+  
+  return {
+      props: {
+          postsDetail,
+      },
+  };
+};
 
 Home.getLayout = useLayout() ;
 

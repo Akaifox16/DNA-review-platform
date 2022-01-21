@@ -1,0 +1,1 @@
+export type { Post, PostCardProps, PostsDetailProps, PostsResponse } from './props'

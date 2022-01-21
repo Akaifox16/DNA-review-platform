@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button, Alert, Card, Form, FloatingLabel } from "react-bootstrap";
 import Link from 'next/link'
 
 import { useAlert, useRegister } from "../hooks";
 
-const register = () => {
+const Register = () => {
     const [user,setUser] = useState({name: "",
                                     email: "",
                                     password: "",}) ;
@@ -113,4 +112,4 @@ const register = () => {
     );
 }
 
-export default register;
+export default Register;

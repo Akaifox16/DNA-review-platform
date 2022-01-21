@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useStorage, useAxios, useLoginContext } from "../";
 import { TOKEN_KEY } from "../../config";
-import { REGISTER_QUERY } from "../../query";
+import { REGISTER_QUERY } from "../../lib/query";
 
 type RegisterInput = {
     name: string,

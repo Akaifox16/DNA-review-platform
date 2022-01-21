@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useAxios, useStorage, useLoginContext } from "../";
 import { TOKEN_KEY } from "../../config";
-import { LOGIN_QUERY } from "../../query";
+import { LOGIN_QUERY } from "../../lib/query";
 
 type LoginInput = {
     email:string
