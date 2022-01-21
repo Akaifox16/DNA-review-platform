@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { Button, Stack } from "react-bootstrap";
 import Card from "./Card";
 
 type SideSectionProps = ({
@@ -11,9 +12,17 @@ const SideSection:SideSectionProps = ({ name }) => {
     return (
         <div>
             <h4>{ name }</h4>
-            <ul>
-                <Card name='test'/>
-            </ul>
+            <Stack gap={1}>
+                <Button variant="outline-primary">
+                    <Card name='test'/>
+                </Button>
+                <Button variant="outline-primary">
+                    <Card name='test'/>
+                </Button>
+                <Button variant="outline-primary">
+                    <Card name='test'/>
+                </Button>
+            </Stack>
         </div>
     );
 }

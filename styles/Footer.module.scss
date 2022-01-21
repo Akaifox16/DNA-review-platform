@@ -1,0 +1,12 @@
+@import "./global_variable/themes";
+@import "./global_variable/shadow";
+
+.container{
+    background: $first-color;
+    box-shadow: $box-shadow;
+}
+
+.copyright{
+    color: $font-color;
+    text-align: center;
+}

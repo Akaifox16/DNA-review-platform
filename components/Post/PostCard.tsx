@@ -1,21 +1,17 @@
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button, Stack } from "react-bootstrap";
 import { PostCardProps } from "../../lib/type";
 
 const PostCard = ({ id, owner, title }: PostCardProps) => {
     return (
-        <Container>
-            <Row>
-                <Col>
-                <Image src='/vercel.svg' width={124} height={124}/>
-                </Col>
-                <Col>
-                    <Row>Product Name: { title }</Row>
-                    <Row>Score</Row>
-                    <Row>Reviewer: { owner }</Row>
-                </Col>
-            </Row>
-        </Container>
+        <Stack direction="horizontal" gap={3}>
+            <Image src='/vercel.svg' width={124} height={124}/>
+            <Stack gap={3}>
+                <div>Product Name: { title }</div>
+                <div>Score: </div>
+                <div>Reviewer: { owner }</div>
+            </Stack>
+        </Stack>
     );
 }
 

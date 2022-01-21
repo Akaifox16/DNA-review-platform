@@ -23,3 +23,7 @@ export type PostsResponse = {
         }
     }
 }
+
+export type SlugProps = {
+    content: string
+}

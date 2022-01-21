@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Stack } from "react-bootstrap";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -14,21 +14,11 @@ type LayoutProps = ({
 
 const Layout: LayoutProps = ({ children }) => {
     return (
-            <Container>
-                <Row>
-                    <Col><Navbar /></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <main>{ children }</main>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Footer />
-                    </Col>
-                </Row>
-            </Container>
+        <Stack gap={3}>
+            <Navbar />
+            <main>{ children }</main>
+            <Footer />
+        </Stack>
     );
 }
 
