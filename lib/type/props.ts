@@ -13,6 +13,7 @@ export type PostCardProps = {
 
 export type SlugProps = {
     content: string
+    author: string
 }
 
 export type FloatingInputProps = {

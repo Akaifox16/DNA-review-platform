@@ -1,15 +1,33 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { Stack } from 'react-bootstrap';
+import { Dropdown, Stack } from 'react-bootstrap';
 
-import { useAxios, useLayout } from "../../hooks";
+import { useAxios, useLayout, useOwnerChecker } from "../../hooks";
 import { POSTS_QUERY } from "../../lib/query";
 import { Response, SlugProps } from "../../lib/type";
 import CommentSection from "../../components/Post/CommentSection";
 
-const Slug = ({ content }:SlugProps) => {
+const Slug = ({ content, author }:SlugProps) => {
+    const owner = useOwnerChecker( author );
+    
     return (
         <Stack>
+            {
+                owner && 
+                <Dropdown>
+                    <Dropdown.Toggle>
+                        <Image 
+                        src={'/favicon.ico'}
+                        width={20}
+                        height={20} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Edit</Dropdown.Item>
+                        <Dropdown.Item>Delete</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            }
             <article>
                 <ReactMarkdown children={content} />
             </article>
@@ -71,6 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props:{
             content,
+            author: 'testes',
         },
     };
 }

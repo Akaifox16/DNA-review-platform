@@ -6,6 +6,7 @@ export { default as useLayout } from './useLayout';
 export { default as useDetectUser } from './useDetectUser';
 export { default as useUsername } from './useUsername';
 export { default as useAlert } from './useAlert';
+export { default as useOwnerChecker } from './useOwnerChecker';
 
 // Auth
 export { default as useRegister } from './Auth/useRegister';
