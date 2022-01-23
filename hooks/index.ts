@@ -14,3 +14,6 @@ export { default as useToken } from './Auth/useToken';
 
 // Context
 export { default as useLoginContext } from './Context/useLoginContext';
+
+//Post
+export { default as useCreatePost } from './Post/useCreatePost';
