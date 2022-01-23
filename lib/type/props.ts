@@ -1,3 +1,5 @@
+import { Post } from "."
+
 export type PostsDetailProps = {
     postsDetail : PostCardProps[]
 }
@@ -8,22 +10,13 @@ export type PostCardProps = {
     owner: string
 }
 
-export type Post = {
-    id: string
-    slug: string
-    owner: {
-        name: string
-    }
-}
-
-export type PostsResponse = {
-    data:{
-        data: {
-            posts: Post[]
-        }
-    }
-}
-
 export type SlugProps = {
     content: string
+}
+
+export type FloatingInputProps = {
+    controlId : string
+    label: string
+    type: string
+    onChange: (e:React.ChangeEvent<HTMLInputElement>) => any
 }

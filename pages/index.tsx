@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Posts, CommunitySection, RankingSection } from '../components' ;
 import { useDetectUser, useLayout, useAxios } from '../hooks' ;
 import { POSTS_QUERY } from "../lib/query";
-import { PostsDetailProps, PostsResponse } from '../lib/type';
+import { PostsDetailProps, Response } from '../lib/type';
 
 import styles from '../styles/Home.module.scss' ;
 
@@ -34,10 +34,9 @@ const Home = ({ postsDetail }:PostsDetailProps ) => {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data }: PostsResponse =  await useAxios(POSTS_QUERY, {} , false);
+  const { data }: Response =  await useAxios(POSTS_QUERY, {} , '');
   const postsDetail = data.data.posts.map(post => {
       const { slug, owner: { name }, id } = post
-
       return { id, title: slug, owner: name };
   })
   

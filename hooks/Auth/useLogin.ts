@@ -10,20 +10,20 @@ type LoginInput = {
 
 const useLogin = (data:LoginInput) => {
     const { setItem } = useStorage();
-    const { setLogin } = useLoginContext();
+    const { setToken } = useLoginContext();
     const router = useRouter();
 
     return () => {
 
         // console.log('login');
-        useAxios(LOGIN_QUERY, {user: data}, false)
+        useAxios(LOGIN_QUERY, {user: data}, '')
         .then(res => {
             if( res.data.data.login === null){
                 console.error(res.data.errors.messages);
                 return ;
             }
 
-            setLogin(true);
+            setToken(res.data.data.login);
             setItem(TOKEN_KEY, JSON.stringify(res.data.data.login), 'session');
             router.push('/');
         });

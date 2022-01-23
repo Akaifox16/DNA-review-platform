@@ -11,18 +11,18 @@ type RegisterInput = {
 
 const useRegister = (data:RegisterInput) => {
     const { setItem } = useStorage();
-    const { setLogin } = useLoginContext();
+    const { setToken } = useLoginContext();
     const router = useRouter();
 
     return () => {        
-        useAxios(REGISTER_QUERY, {user: data}, false)
+        useAxios(REGISTER_QUERY, {user: data}, '')
         .then(res => {
             if(res.data.data.register === null) {
                 console.error(res.data.errors.messages);
                 return ;
             }
 
-            setLogin(true);
+            setToken(res.data.data.register);
             setItem(TOKEN_KEY, JSON.stringify(res.data.data.register) ,'session');
             router.push('/');
         });

@@ -3,6 +3,7 @@ import { Button, Alert, Card, Form, FloatingLabel } from "react-bootstrap";
 import Link from 'next/link'
 
 import { useAlert, useRegister } from "../hooks";
+import { Input } from "../components";
 
 const Register = () => {
     const [user,setUser] = useState({name: "",
@@ -29,50 +30,41 @@ const Register = () => {
                 <Card.Title><h1>Register</h1></Card.Title>
                 <div className="mx-md-5" >
                     <Form>
-                        <FloatingLabel
-                            controlId="floatingInput"
+                        <Input 
+                            controlId="floatingUsername"
                             label="Username"
-                            className="mb-3" >
-                            <Form.Control 
-                            placeholder="User name" 
-                            onChange={
-                                e =>{
+                            type="text"
+                            onChange= {
+                                e => {
                                     setUser({...user, name: e.target.value});
                                 }
-                            }/>
-                        </FloatingLabel>
-                        <FloatingLabel
-                            controlId="floatingInput"
+                            }
+                        />
+                        <Input 
+                            controlId="floatingEmail"
                             label="Email"
-                            className="mb-3" >
-                            <Form.Control 
-                            type="email" 
-                            placeholder="Email" 
-                            onChange={
-                                e =>{
+                            type="email"
+                            onChange= {
+                                e => {
                                     setUser({...user, email: e.target.value});
                                 }
-                            }/>
-                        </FloatingLabel>
-                        <FloatingLabel 
-                            controlId="floatingPassword" 
-                            label="Password">
-                            <Form.Control 
-                            type="password" 
-                            placeholder="Password" 
-                            onChange={
-                                e =>{
-                                    setUser({...user, password: e.target.value})
+                            }
+                        />
+                        <Input 
+                            controlId="floatingPassword"
+                            label="Password"
+                            type="password"
+                            onChange= {
+                                e => {
+                                    setUser({...user, password: e.target.value});
                                 }
-                            }/>
-                        </FloatingLabel>
-                        <FloatingLabel 
-                            controlId="floatingPassword" 
-                            label="Confirm Password">
-                            <Form.Control 
-                            type="password" 
-                            placeholder="Confirm Password" 
-                            onChange={
+                            }
+                        />
+                        <Input 
+                            controlId="floatingConfirmationPassword"
+                            label="Confirm Password"
+                            type="password"
+                            onChange= {
                                 e => {
                                     if (e.target.value === user.password){
                                         setEnable(false);
@@ -80,8 +72,8 @@ const Register = () => {
                                         setEnable(true);
                                     }
                                 }
-                            }/>
-                        </FloatingLabel>
+                            }
+                        />
                     </Form>
                 </div>
                 <div className="m-3">
@@ -91,7 +83,7 @@ const Register = () => {
                     size = "lg" 
                     disabled={ disable }
                     onClick={e => {
-                        e.preventDefault()
+                        e.preventDefault();
                         signin();
                     }}
                     >

@@ -6,6 +6,7 @@ import { LoginContext } from '../context'
 
 import '../styles/globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Token } from '../lib/type'
 
 type PageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -16,11 +17,14 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const [isLogin, setLogin] = useState(false);
+  const [token, setToken] = useState<Token>({
+                                              username:'',
+                                              token: '',
+                                            });
   const getLayout = Component.getLayout ?? ((page)=> page);
 
   return (
-    <LoginContext.Provider value={ { isLogin, setLogin } }>
+    <LoginContext.Provider value={ { token, setToken } }>
       {
         getLayout(
           <Component {...pageProps} />

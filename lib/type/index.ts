@@ -1,5 +1,8 @@
-export type {   Post, 
-                PostCardProps, 
+export type {   PostCardProps, 
                 PostsDetailProps, 
-                PostsResponse,
-                SlugProps, } from './props'
+                SlugProps,
+                FloatingInputProps } from './props'
+
+export type {   Post,
+                Token,
+                Response,  } from './type'

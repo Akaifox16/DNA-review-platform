@@ -3,6 +3,7 @@ import { Button, Form, Card, Alert, FloatingLabel } from "react-bootstrap";
 import Link from "next/link";
 
 import { useAlert, useLogin } from "../hooks";
+import { Input } from "../components";
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -29,31 +30,22 @@ const Login = () => {
                 <Card.Title><h1>Login</h1></Card.Title>
                 <div className="mx-md-5" >
                     <Form>
-                        <FloatingLabel
-                            controlId="floatingInput"
+                        <Input 
+                            controlId="floatingEmail"
                             label="Email"
-                            className="mb-3" >
-                            <Form.Control 
                             type="email" 
-                            placeholder="Email" 
-                            onChange={
-                                e =>{
-                                    setUser({...user, email: e.target.value});
-                                }
-                            }/>
-                        </FloatingLabel>
-                        <FloatingLabel 
-                        controlId="floatingPassword" 
-                        label="Password">
-                            <Form.Control 
+                            onChange={e => {
+                                setUser({...user, email: e.target.value});
+                            }}
+                        />
+                        <Input 
+                            controlId="floatingPassword"
+                            label="Password"
                             type="password" 
-                            placeholder="Password" 
-                            onChange={
-                                e =>{
-                                    setUser({...user, password: e.target.value})
-                                }
-                            }/>
-                        </FloatingLabel>
+                            onChange={e => {
+                                setUser({...user, password: e.target.value});
+                            }}
+                        />
                     </Form>
                 </div>
                 <div className="m-3">

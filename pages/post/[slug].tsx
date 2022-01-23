@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 import { useAxios, useLayout } from "../../hooks";
 import { POSTS_QUERY } from "../../lib/query";
-import { PostsResponse, SlugProps } from "../../lib/type";
+import { Response, SlugProps } from "../../lib/type";
 
 const Slug = ({ content }:SlugProps) => {
     return (
@@ -14,7 +14,7 @@ const Slug = ({ content }:SlugProps) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { data }: PostsResponse = await useAxios(POSTS_QUERY, {}, false);
+    const { data }: Response = await useAxios(POSTS_QUERY, {}, '');
     const paths = data.data.posts.map(post => ({
         params: {
             slug: post.slug

@@ -1,5 +1,5 @@
 const useToken = (token:string) => {
-    return {Authorization : token}
+    return {Authorization : 'Bearer ' + token}
 }
 
 export default useToken;

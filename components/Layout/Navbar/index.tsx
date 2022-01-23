@@ -8,7 +8,13 @@ import { useLoginContext } from '../../../hooks';
 import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
-    const { isLogin } = useLoginContext();
+    const { token } = useLoginContext();
+    let isLogin: Boolean;
+    if(token.username === ''){
+        isLogin = false
+    }else{
+        isLogin = true
+    }
 
     return (
         <Container>

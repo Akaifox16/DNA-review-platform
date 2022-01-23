@@ -7,3 +7,4 @@ export { default as SideSection } from './SideSection';
 export { default as CommunitySection } from './CommunitySection';
 export { default as RankingSection } from './RankingSection';
 export { default as Searchbar } from './Layout/Navbar/Searchbar';
+export { default as Input } from './Form/Input';

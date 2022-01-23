@@ -10,6 +10,15 @@ query{
 }
 `;
 
+export const USER_POSTS_QUERY = `
+query{
+	userPosts{
+		slug
+		id
+	}
+}
+`
+
 export const REGISTER_QUERY = `
 mutation($user: UserCreateInput!){
     register(user: $user) {
