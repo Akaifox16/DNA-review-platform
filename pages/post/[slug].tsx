@@ -1,15 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import ReactMarkdown from "react-markdown";
+import { Stack } from 'react-bootstrap';
 
 import { useAxios, useLayout } from "../../hooks";
 import { POSTS_QUERY } from "../../lib/query";
 import { Response, SlugProps } from "../../lib/type";
+import CommentSection from "../../components/Post/CommentSection";
 
 const Slug = ({ content }:SlugProps) => {
     return (
-        <article>
-            <ReactMarkdown children={content} />
-        </article>
+        <Stack>
+            <article>
+                <ReactMarkdown children={content} />
+            </article>
+            <CommentSection comments={[]} />
+        </Stack>
     );
 }
 

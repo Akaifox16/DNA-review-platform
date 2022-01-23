@@ -4,17 +4,11 @@ import Image from "next/image";
 import { Button, Row, Col, Container } from "react-bootstrap";
 
 import Searchbar from "./Searchbar";
-import { useLoginContext } from '../../../hooks';
+import { useAuthChecker } from '../../../hooks';
 import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
-    const { token } = useLoginContext();
-    let isLogin: Boolean;
-    if(token.username === ''){
-        isLogin = false
-    }else{
-        isLogin = true
-    }
+    const { isLogin } = useAuthChecker();
 
     return (
         <Container>
@@ -28,7 +22,7 @@ const Navbar = () => {
                     <Searchbar />   
                 </Col>
                 <Col>
-                    <Row>
+                    { isLogin && <Row>
                         <Col>
                             <Link href='/post'>
                                 <Button 
@@ -45,7 +39,7 @@ const Navbar = () => {
                             </Button>
                         </Link>
                         </Col>
-                    </Row>
+                    </Row>}
                 </Col>
                 <Col>
                     {isLogin &&

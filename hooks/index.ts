@@ -11,6 +11,7 @@ export { default as useAlert } from './useAlert';
 export { default as useRegister } from './Auth/useRegister';
 export { default as useLogin } from './Auth/useLogin';
 export { default as useToken } from './Auth/useToken';
+export { default as useAuthChecker } from './Auth/useAuthChecker';
 
 // Context
 export { default as useLoginContext } from './Context/useLoginContext';

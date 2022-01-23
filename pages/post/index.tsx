@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Stack } from "react-bootstrap";
+import { Button, Col, Row, Container, Stack } from "react-bootstrap";
 import { Posts } from "../../components";
 import { useAxios, useLayout, useLoginContext } from "../../hooks";
 import { USER_POSTS_QUERY } from "../../lib/query";
@@ -25,10 +26,22 @@ const Post = () => {
     return (
         <div>
             <Stack gap={3}>
-                <Stack direction="horizontal" gap={3}>
-                    <div className="vr"></div>
-                    <div className="vr"></div>
-                </Stack>       
+                <Container>
+                    <Row>
+                        <Col
+                            sm={8}>
+                        </Col>
+                        <Col>
+                            <Link href='/post/create'>
+                                <Button
+                                    variant="success"
+                                >
+                                    Write New Review
+                                </Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Container>       
                 <Posts postsDetail={ postsDetail }/>    
             </Stack>
         </div>
