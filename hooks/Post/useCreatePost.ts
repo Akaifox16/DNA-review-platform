@@ -12,13 +12,13 @@ type PostInput = {
     owner:string
 }
 
-const useCreatePost = (data:PostInput) => {
+const useCreatePost = (data:PostInput, token: string) => {
     const router = useRouter();
 
     return () => {
 
         // console.log('login');
-        useAxios(CREATE_POST_QUERY, {post: data}, true)
+        useAxios(CREATE_POST_QUERY, {post: data}, token)
         .then(res => {
             if( res.data.data.createPost === null){
                 console.error(res.data.errors.messages);

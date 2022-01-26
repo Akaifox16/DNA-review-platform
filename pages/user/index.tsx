@@ -1,7 +1,12 @@
+import { useEffect, useState } from "react";
 import { useLayout, useUsername } from "../../hooks";
 
 const UserPage = () => {
-    const name = useUsername();
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        setName(useUsername());
+    }, [])
 
     return (
         <div>

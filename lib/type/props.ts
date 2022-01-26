@@ -1,5 +1,5 @@
 import { Dispatch } from "react"
-import { Comment } from "."
+import { Comment, Tag } from "."
 
 export type PostsDetailProps = {
     postsDetail : PostCardProps[]
@@ -12,8 +12,10 @@ export type PostCardProps = {
 }
 
 export type SlugProps = {
-    content: string
     author: string
+    content: string
+    comments: Comment[]
+    tags: Tag[]
 }
 
 export type FloatingInputProps = {

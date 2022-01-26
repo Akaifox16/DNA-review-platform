@@ -8,4 +8,5 @@ export type {   PostCardProps,
 export type {   Post,
                 Token,
                 Response,
-                Comment,  } from './type'
+                Comment,
+                Tag  } from './type'

@@ -5,18 +5,18 @@ import { useOwnerChecker } from "../../../hooks";
 import { Comment } from "../../../lib/type";
 import CommentDropdown from "./CommentDropdown";
 
-const CommentCard = ({ id, content, author }: Comment) => {
-    const owner = useOwnerChecker( author );
+const CommentCard = ({ id, content, owner }: Comment) => {
+    const author = useOwnerChecker( owner.name );
 
     return (
         <div key={id}>
             <Stack>
                 { 
-                    owner && 
+                    author && 
                     <CommentDropdown />
                 }
                 <ReactMarkdown children={ content } />
-                <p>{ author }</p>
+                <p>{ owner.name }</p>
             </Stack>
         </div>
     );

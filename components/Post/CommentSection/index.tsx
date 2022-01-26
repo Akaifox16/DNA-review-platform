@@ -36,12 +36,12 @@ const CommentSection = ({ comments }:CommentSectionProps ) => {
             </div>}
             {
                 comments.map( comment => {
-                    const { content, author, id } = comment;
+                    const { content, owner, id } = comment;
                     return (
                         <CommentCard 
                             id={ id }
                             content={ content }
-                            author={ author }
+                            owner={ owner }
                         />
                     );
                 })

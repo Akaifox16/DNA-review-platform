@@ -4,11 +4,12 @@ import Image from "next/image";
 import { Button, Row, Col, Container } from "react-bootstrap";
 
 import Searchbar from "./Searchbar";
-import { useAuthChecker } from '../../../hooks';
+import { useAuthChecker, useDetectUser } from '../../../hooks';
 import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
     const { isLogin } = useAuthChecker();
+    useDetectUser();
 
     return (
         <Container>

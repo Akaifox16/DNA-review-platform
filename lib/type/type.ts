@@ -1,9 +1,10 @@
 export type Post = {
     id: string
     slug: string
-    owner: {
-        name: string
-    }
+    owner: Author
+    content: string
+    comments: Comment[]
+    tags: Tag[]
 }
 
 export type Token = {
@@ -18,6 +19,7 @@ export type Response = {
             login: Token
             userPosts: Post[]
             posts: Post[]
+            post: Post
         }
     }
 }
@@ -25,5 +27,15 @@ export type Response = {
 export type Comment = {
     id: string
     content: string
-    author: string
+    owner: Author
+}
+
+export type Tag = {
+    id: string
+    name: string
+}
+
+export type Author = {
+    id: string
+    name: string
 }

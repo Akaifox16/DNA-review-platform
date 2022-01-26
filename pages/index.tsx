@@ -10,8 +10,6 @@ import { PostsDetailProps, Response } from '../lib/type';
 import styles from '../styles/Home.module.scss' ;
 
 const Home = ({ postsDetail }:PostsDetailProps ) => {
-  useDetectUser() ;
-
   return (
     <Container>
       <Row>

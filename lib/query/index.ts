@@ -45,3 +45,25 @@ mutation($post: PostCreateInput!){
   }
 }
 ` ;
+
+export const POST_BY_ID_QUERY = `
+query($slug: String!){
+	post(slug: $slug){
+		owner{
+			name
+		}
+		content
+		comments{
+			owner{
+				id
+				name
+			}
+			content
+		}
+		tags{
+			id
+			name
+		}
+	}
+}
+`;

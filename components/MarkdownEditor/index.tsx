@@ -3,6 +3,7 @@ import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
 import { Button, Stack } from "react-bootstrap";
 import { MarkdownEditorProps } from "../../lib/type";
+import rehypeSanitize from 'rehype-sanitize';
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor"),
@@ -15,7 +16,14 @@ const MarkdownEditor = ({   value, setValue,
                             confirmText, height }: MarkdownEditorProps ) => {
     return (
         <div>
-        <MDEditor value={value} onChange={setValue} height={height} />
+        <MDEditor 
+            value={value} 
+            onChange={setValue} 
+            height={height} 
+            previewOptions={{
+                rehypePlugins: [[rehypeSanitize]]
+            }}
+        />
         <div>
             <Stack direction='horizontal' >
                 <Button
