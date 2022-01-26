@@ -19,3 +19,6 @@ export { default as useLoginContext } from './Context/useLoginContext';
 
 //Post
 export { default as useCreatePost } from './Post/useCreatePost';
+
+//Comment
+export { default as useCreateComment } from './Post/Comment/useCreateComment';

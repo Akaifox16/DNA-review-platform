@@ -4,12 +4,12 @@ const useAuthChecker =  () => {
     const { token } = useLoginContext();
     let isLogin: Boolean;
     if(token.username === ''){
-        isLogin = false
+        isLogin = false;
     }else{
-        isLogin = true
+        isLogin = true;
     }
 
-    return { isLogin, token }
+    return { isLogin, token };
 }
 
-export default useAuthChecker
+export default useAuthChecker;

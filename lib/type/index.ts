@@ -9,4 +9,6 @@ export type {   Post,
                 Token,
                 Response,
                 Comment,
-                Tag  } from './type'
+                Tag,
+                PostInput,
+                CommentCreateInput,  } from './type'

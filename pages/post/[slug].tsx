@@ -1,44 +1,21 @@
 import { useEffect, useState } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { Dropdown, Stack } from 'react-bootstrap';
 
 import { Response, SlugProps } from "../../lib/type";
-import { useAuthChecker, useAxios, useLayout, useOwnerChecker } from "../../hooks";
+import { useAxios, useLayout, useOwnerChecker } from "../../hooks";
 import { POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
 import { CommentSection } from "../../components";
 
 
-const Slug = () => {
-    const [review, setReview] = useState<SlugProps>({
-        author: "",
-        content: "",
-        comments: [],
-        tags: []
-    })
+const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
     const [owner, setOwner] = useState(false);
-    const { token } = useAuthChecker();
-
-    const router = useRouter();
     
     useEffect(  ()=> {
-        
-        useAxios(POST_BY_ID_QUERY, {slug: router.query.slug}, token.token)
-        .then((res: Response) => {
-            const { owner: { name }, content, comments, tags } = res.data.data.post
-            setReview({...review,
-                        author: name,
-                        content,
-                        comments,
-                        tags });
-        })
-        .then(() => {
-            const isOwner = useOwnerChecker(review.author);
+            const isOwner = useOwnerChecker(author);
             setOwner(isOwner);
-        })
-    
     }, [])
     
     return (
@@ -60,10 +37,10 @@ const Slug = () => {
             }
             <article>
                 <ReactMarkdown 
-                    children={ `${review.content}` }
+                    children={ `${content}` }
                 />
             </article>
-            <CommentSection comments={ review.comments } />
+            <CommentSection comments={ comments }  pid={id} />
         </Stack>
     );
 }
@@ -82,10 +59,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 }
 
-export const getStaticProps: GetStaticProps = async() => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    if(params !== undefined){
+        const { data }: Response = await useAxios(POST_BY_ID_QUERY, {slug: params.slug}, '');
+        const { id, owner: { name }, content, comments, tags } = data.data.post
+        
+        return {
+            props:{
+                id,
+                author: name,
+                content,
+                comments,
+                tags
+            }
+        }
+
+    }
+    
     return {
         props:{
-
+            
         }
     }
 }

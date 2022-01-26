@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Stack } from "react-bootstrap";
-import { useAuthChecker } from "../../../hooks";
+import { useAuthChecker, useCreateComment } from "../../../hooks";
 import { CommentSectionProps } from "../../../lib/type";
 import MarkdownEditor from "../../MarkdownEditor";
 import CommentCard from "./CommentCard";
 
-const CommentSection = ({ comments }:CommentSectionProps ) => {
-    const { isLogin } = useAuthChecker();
+const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
+    const { isLogin, token } = useAuthChecker();
+    const [commentList, setComment] = useState(comments);
     const [value, setValue] = useState<string | undefined>('');
+    const createComment = useCreateComment();
 
     return (
         <div>
@@ -24,7 +26,17 @@ const CommentSection = ({ comments }:CommentSectionProps ) => {
                         setValue('');
                     }}
                     onClickSuccess={e => {
-
+                        e.preventDefault();
+                        createComment({ belongsTo: pid,
+                            content: value === undefined
+                                    ? ''
+                                    : value },
+                            token.token )
+                        .then(comment => {
+                            setComment([...commentList, comment]);
+                            console.log(commentList);
+                            setValue('');
+                        })
                     }}
                 />
             }
@@ -35,7 +47,7 @@ const CommentSection = ({ comments }:CommentSectionProps ) => {
                     </Link> first</p>
             </div>}
             {
-                comments.map( comment => {
+                commentList.map( comment => {
                     const { content, owner, id } = comment;
                     return (
                         <CommentCard 

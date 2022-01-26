@@ -12,6 +12,7 @@ export type PostCardProps = {
 }
 
 export type SlugProps = {
+    id: string
     author: string
     content: string
     comments: Comment[]
@@ -35,5 +36,6 @@ export type MarkdownEditorProps = {
 }
 
 export type CommentSectionProps = {
+    pid: string
     comments: Comment[]
 }

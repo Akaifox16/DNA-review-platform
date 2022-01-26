@@ -13,6 +13,7 @@ const Register = () => {
     const { alert } = useAlert();
     const signin = useRegister(user);
 
+
     return (
         <div className="m-5">
         {
@@ -74,29 +75,29 @@ const Register = () => {
                                 }
                             }
                         />
-                    </Form>
-                </div>
-                <div className="m-3">
-                    <Button 
-                    variant="success" 
-                    type= "submit" 
-                    size = "lg" 
-                    disabled={ disable }
-                    onClick={e => {
-                        e.preventDefault();
-                        signin();
-                    }}
-                    >
-                        Register
-                    </Button>
-                    {' '}
-                    <Link href='/'>
+                    <div className="m-3">
                         <Button 
-                        variant="secondary"
-                        size="lg">
-                            Back
+                        variant="success" 
+                        type= "submit" 
+                        size = "lg" 
+                        disabled={ disable }
+                        onClick={e => {
+                            e.preventDefault();
+                            signin();
+                        }}
+                        >
+                            Register
                         </Button>
-                    </Link>
+                        {' '}
+                        <Link href='/'>
+                            <Button 
+                            variant="secondary"
+                            size="lg">
+                                Back
+                            </Button>
+                        </Link>
+                    </div>
+                    </Form>
                 </div>
             </Card.Body>
         </Card>

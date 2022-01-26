@@ -4,11 +4,15 @@ import { Card,  Form } from "react-bootstrap";
 
 import { Input } from "../../components";
 import MarkdownEditor from "../../components/MarkdownEditor";
-import { useLayout } from "../../hooks";
+import { useCreatePost, useLayout, useAuthChecker } from "../../hooks";
 
 const CreatePost = () => {
     const [value, setValue] = useState<string | undefined>('');
+    const [title, setTitle] = useState<string>('');
     const router = useRouter();
+
+    const { token } = useAuthChecker();
+    const post = useCreatePost();
 
     return (
         <Card>
@@ -20,7 +24,7 @@ const CreatePost = () => {
                         label="Title"  
                         type="text"
                         onChange={e => {
-                            console.log(e.target.value)
+                            setTitle(e.target.value);
                         }}
                     />
                     <Input 
@@ -41,15 +45,18 @@ const CreatePost = () => {
                             router.push('/post');
                         }}
                         onClickSuccess={e => {
-
+                            post({slug: title.replace(/\s/g, '-'),
+                                tags: [],
+                                content: value === undefined ? '' : value}, token.token);
                         }}
                     />
                 </Form>
             </div>
         </Card>
     );
-}
+};
 
 CreatePost.getLayout = useLayout();
 
 export default CreatePost;
+

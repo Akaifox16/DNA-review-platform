@@ -1,12 +1,12 @@
 export const POSTS_QUERY = `
 query{
-  posts {
-    id
-    slug
-    owner {
-      name
-    }
-  }
+	posts {
+		id
+		slug
+		owner {
+		name
+		}
+	}
 }
 `;
 
@@ -30,25 +30,26 @@ mutation($user: UserCreateInput!){
 
 export const LOGIN_QUERY = `
 mutation($user: UserLoginInput!){
-  login(user: $user) {
-    token
-    username
-  }
+	login(user: $user) {
+		token
+		username
+	}
 }
 ` ;
 
 export const CREATE_POST_QUERY = `
 mutation($post: PostCreateInput!){
-  createPost(post: $post) {
-    slug
-    content
-  }
+	createPost(post: $post) {
+		slug
+		content
+	}
 }
 ` ;
 
 export const POST_BY_ID_QUERY = `
 query($slug: String!){
 	post(slug: $slug){
+		id
 		owner{
 			name
 		}
@@ -67,3 +68,15 @@ query($slug: String!){
 	}
 }
 `;
+
+export const CREATE_COMMENT_QUERY = `
+mutation($comment: CommentCreateInput!){
+	createComment(comment: $comment){
+		id
+		owner{
+			name
+		}
+		content
+	}
+}
+`

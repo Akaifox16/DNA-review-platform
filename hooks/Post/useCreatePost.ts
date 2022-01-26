@@ -1,21 +1,13 @@
 import { useRouter } from "next/router";
-import { useAxios, useStorage, useLoginContext } from "..";
-import { TOKEN_KEY } from "../../config";
+import { useAxios } from "..";
 import { CREATE_POST_QUERY } from "../../lib/query";
+import { PostInput } from "../../lib/type";
 
 
-type PostInput = {
-    slug:string
-    tags:[]
-    comment:[]
-    content:string
-    owner:string
-}
-
-const useCreatePost = (data:PostInput, token: string) => {
+const useCreatePost = () => {
     const router = useRouter();
 
-    return () => {
+    return (data: PostInput, token: string) => {
 
         // console.log('login');
         useAxios(CREATE_POST_QUERY, {post: data}, token)

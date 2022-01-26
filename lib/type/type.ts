@@ -39,3 +39,14 @@ export type Author = {
     id: string
     name: string
 }
+
+export type PostInput = {
+    slug:string
+    tags:[]
+    content:string
+}
+
+export type CommentCreateInput = {
+    belongsTo: string
+    content: string
+}

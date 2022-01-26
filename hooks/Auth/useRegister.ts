@@ -30,3 +30,4 @@ const useRegister = (data:RegisterInput) => {
 }
 
 export default useRegister;
+
