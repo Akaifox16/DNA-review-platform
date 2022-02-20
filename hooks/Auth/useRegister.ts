@@ -23,7 +23,7 @@ const useRegister = (data:RegisterInput) => {
             }
 
             setToken(res.data.data.register);
-            setItem(TOKEN_KEY, JSON.stringify(res.data.data.register) ,'session');
+            setItem(TOKEN_KEY, JSON.stringify(res.data.data.register) ,'local');
             router.push('/');
         });
     }   ;

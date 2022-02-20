@@ -6,7 +6,7 @@ const useDetectUser = () => {
     const { setToken } = useLoginContext();
     const { getItem } = useStorage();
     useEffect(() => {
-        const token = getItem(TOKEN_KEY, 'session');
+        const token = getItem(TOKEN_KEY, 'local');
         if(token){
             setToken(JSON.parse(token));
         }else{

@@ -30,11 +30,6 @@ export type Comment = {
     owner: Author
 }
 
-export type Tag = {
-    id: string
-    name: string
-}
-
 export type Author = {
     id: string
     name: string
@@ -42,11 +37,16 @@ export type Author = {
 
 export type PostInput = {
     slug:string
-    tags:[]
+    tags: Tag[]
     content:string
 }
 
 export type CommentCreateInput = {
     belongsTo: string
     content: string
+}
+
+export type Tag = {
+    id: string;
+    text: string;
 }

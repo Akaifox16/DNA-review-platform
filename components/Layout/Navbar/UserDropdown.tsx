@@ -8,8 +8,9 @@ const UserDropdown = () => {
     const router = useRouter();
     const clickHandler = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        removeItem(TOKEN_KEY);
+        removeItem(TOKEN_KEY, 'local');
         router.push('/');
+        router.reload();
     }
     return (
         <Dropdown>

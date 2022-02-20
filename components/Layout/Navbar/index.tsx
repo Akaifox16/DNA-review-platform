@@ -32,14 +32,14 @@ const Navbar = () => {
                                 </Button>
                             </Link>
                         </Col>
-                        <Col>
+                        {/* <Col>
                         <Link href='/point'>
                             <Button 
                             className="secondary" >
                                 Points
                             </Button>
                         </Link>
-                        </Col>
+                        </Col> */}
                     </Row>}
                 </Col>
                 <Col>

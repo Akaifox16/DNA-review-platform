@@ -3,12 +3,13 @@ export type {   PostCardProps,
                 SlugProps,
                 FloatingInputProps,
                 MarkdownEditorProps,
-                CommentSectionProps, } from './props'
+                CommentSectionProps,
+                TagsInputProps, } from './props'
 
 export type {   Post,
                 Token,
                 Response,
                 Comment,
-                Tag,
                 PostInput,
-                CommentCreateInput,  } from './type'
+                CommentCreateInput,
+                Tag,  } from './type'

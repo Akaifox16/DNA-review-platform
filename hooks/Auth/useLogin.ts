@@ -24,7 +24,7 @@ const useLogin = (data:LoginInput) => {
             }
 
             setToken(res.data.data.login);
-            setItem(TOKEN_KEY, JSON.stringify(res.data.data.login), 'session');
+            setItem(TOKEN_KEY, JSON.stringify(res.data.data.login), 'local');
             router.push('/');
         });
     };

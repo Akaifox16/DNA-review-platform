@@ -1,5 +1,6 @@
-import { Dispatch } from "react"
-import { Comment, Tag } from "."
+import { Dispatch, SetStateAction } from "react"
+import { Tag } from "react-tag-input"
+import { Comment } from "."
 
 export type PostsDetailProps = {
     postsDetail : PostCardProps[]
@@ -38,4 +39,9 @@ export type MarkdownEditorProps = {
 export type CommentSectionProps = {
     pid: string
     comments: Comment[]
+}
+
+export type TagsInputProps = {
+    tags: Tag[]
+    setTags: Dispatch<SetStateAction<Tag[]>>
 }

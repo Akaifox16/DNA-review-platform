@@ -1,4 +1,5 @@
-import { Stack } from "react-bootstrap";
+import Image from 'next/image';
+import { Card } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import { useOwnerChecker } from "../../../hooks";
 
@@ -10,14 +11,25 @@ const CommentCard = ({ id, content, owner }: Comment) => {
 
     return (
         <div key={id}>
-            <Stack>
+            <Card style={{ width: '18rem' }}>
                 { 
                     author && 
                     <CommentDropdown />
                 }
-                <ReactMarkdown children={ content } />
-                <p>{ owner.name }</p>
-            </Stack>
+                <Card.Title>{ owner.name }</Card.Title>
+                <Card.Text>
+                    <ReactMarkdown 
+                        children={ content } 
+                        components= {{
+                            img: ({node, src, ...props}) => <Image
+                                                            src={src as string}
+                                                            width={200} 
+                                                            height={200}
+                                                            />
+                        }}
+                    />
+                </Card.Text>
+            </Card>
         </div>
     );
 }
