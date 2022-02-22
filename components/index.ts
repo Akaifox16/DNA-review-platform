@@ -11,4 +11,4 @@ export { default as Input } from './Form/Input';
 export { default as CommentSection } from './Post/CommentSection';
 export { default as TagInput } from './Form/TagsInput';
 
-export { default as Communitys } from './Community';
+// export { default as Communitys } from './Community';

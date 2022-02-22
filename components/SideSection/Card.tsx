@@ -1,23 +1,17 @@
 import Image from "next/image";
-import { ReactElement } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { CardProps } from "../../lib/type";
 
-type CardProps = ({
-    name
-}:{
-    name: String
-}) => ReactElement
-
-const Card: CardProps = ({ name }) => {
+const Card= ({ name }: CardProps) => {
     return (
         <Container>
             <Row>
-                <Col>
+                {/* <Col>
                     <Image 
                     src='/favicon.ico' 
                     width={32} 
                     height={32} />
-                </Col>
+                </Col> */}
                 <Col>
                     <p>{ name }</p>
                 </Col>

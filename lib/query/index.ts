@@ -1,14 +1,36 @@
+export const HOMEPAGE_QUERY = `
+query{
+	posts {
+		id
+		slug
+		tags
+		owner {
+		name
+		}
+	}
+	communities{
+		id
+		name
+	}
+	ranking{
+		id
+		name
+	}
+}
+`;
+
 export const POSTS_QUERY = `
 query{
 	posts {
 		id
 		slug
+		tags
 		owner {
 		name
 		}
 	}
 }
-`;
+`
 
 export const USER_POSTS_QUERY = `
 query{
@@ -61,10 +83,7 @@ query($slug: String!){
 			}
 			content
 		}
-		tags{
-			id
-			name
-		}
+		tags
 	}
 }
 `;

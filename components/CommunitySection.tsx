@@ -1,8 +1,9 @@
+import { OverrideSectionProps, SideSectionProps } from "../lib/type";
 import SideSection from "./SideSection";
 
-const CommunitySection = () => {
+const CommunitySection = ({ cardlist }: OverrideSectionProps) => {
     return (
-        <SideSection name='Community' />
+        <SideSection name='Community' cardlist={cardlist} />
     );
 }
 

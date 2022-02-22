@@ -38,6 +38,12 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
             <article>
                 <ReactMarkdown 
                     children={ `${content}` }
+                    components= {{
+                        img: ({node, src, ...props}) => <img
+                                                        src={src as string}
+                                                        width={700} 
+                                                        />
+                    }}
                 />
             </article>
             <CommentSection comments={ comments }  pid={id} />

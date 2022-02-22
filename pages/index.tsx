@@ -2,15 +2,14 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { Posts, CommunitySection, RankingSection, Communitys } from '../components' ;
+import { Posts, CommunitySection, RankingSection } from '../components' ;
 import { useDetectUser, useLayout, useAxios } from '../hooks' ;
-import { POSTS_QUERY } from "../lib/query";
-import { PostsDetailProps, Response } from '../lib/type';
-import { CommunityDetailProps } from '../lib/type/props';
+import { HOMEPAGE_QUERY } from "../lib/query";
+import { HomepageProps, Response } from '../lib/type';
 
 import styles from '../styles/Home.module.scss' ;
 
-const Home = ({ postsDetail }:PostsDetailProps ,{commusDetail}:CommunityDetailProps) => {
+const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   return (
     <Container>
       <Row>
@@ -19,10 +18,12 @@ const Home = ({ postsDetail }:PostsDetailProps ,{commusDetail}:CommunityDetailPr
         </Col>
         <Col>
           <Row>
-            <Communitys commusDetail={commusDetail}  />
+            <RankingSection
+              cardlist={ranks} />
           </Row>
           <Row>
-            <RankingSection />
+            <CommunitySection 
+              cardlist={commuDetail} />
           </Row>
         </Col>
       </Row>
@@ -33,26 +34,17 @@ const Home = ({ postsDetail }:PostsDetailProps ,{commusDetail}:CommunityDetailPr
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data }: Response =  await useAxios(POSTS_QUERY, {} , '');
-  const postsDetail = data.data.posts.map(post => {
-      const { slug, owner: { name }, id } = post
+  const { data: { data: { posts, communities, ranking }} }: Response =  await useAxios(HOMEPAGE_QUERY, {} , '');
+  const postsDetail = posts.map(post => {
+      const { slug, owner: { name }, id } = post;
       return { id, title: slug, owner: name };
   })
-  // const { data2 }: Response = await useAxios(COMMU_QUERY,{},'');
-  // const communityDetail = data2.commus.map(commu => {
-  //     const {id, name, posts} = commu
-  //     return {id, name, posts}
-  // })
-  const commusDetail = {
-            id: 12,
-            name: "47 Community",
-            Post: [],
-  }
-  
+
   return {
       props: {
           postsDetail,
-          commusDetail,
+          commuDetail: communities,
+          ranks: ranking,
       },
   };
 };

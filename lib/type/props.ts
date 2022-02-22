@@ -1,10 +1,15 @@
-import { type } from "os"
 import { Dispatch, SetStateAction } from "react"
 import { Tag } from "react-tag-input"
 import { Comment } from "."
 
-export type PostsDetailProps = {
-    postsDetail : PostCardProps[]
+export type HomepageProps = {
+    postsDetail: PostCardProps[]
+    commuDetail: CardProps[]
+    ranks: CardProps[]
+}
+
+export type OverrideSectionProps ={
+    cardlist: CardProps[]
 }
 
 export type PostCardProps = {
@@ -13,15 +18,14 @@ export type PostCardProps = {
     owner: string
 }
 
-export type CommunityDetailProps = {
-    commusDetail : CommunityCardProps[]
+export type SideSectionProps = {
+    name: String
+    cardlist: CardProps[]
 }
 
-
-export type CommunityCardProps = {
-    id: string
-    name: string
-    tags: Tag[]
+export type CardProps = {
+    id: String
+    name: String
 }
 
 export type SlugProps = {
