@@ -14,14 +14,14 @@ export type PostCardProps = {
 }
 
 export type CommunityDetailProps = {
-    communityDetail : CommunityCardProps[]
+    commusDetail : CommunityCardProps[]
 }
 
 
 export type CommunityCardProps = {
     id: string
     name: string
-    tags: string[]
+    tags: Tag[]
 }
 
 export type SlugProps = {
