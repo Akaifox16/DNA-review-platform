@@ -1,3 +1,4 @@
+import { type } from "os"
 import { Dispatch, SetStateAction } from "react"
 import { Tag } from "react-tag-input"
 import { Comment } from "."
@@ -10,6 +11,17 @@ export type PostCardProps = {
     id: string
     title: string
     owner: string
+}
+
+export type CommunityDetailProps = {
+    communityDetail : CommunityCardProps[]
+}
+
+
+export type CommunityCardProps = {
+    id: string
+    name: string
+    tags: string[]
 }
 
 export type SlugProps = {
