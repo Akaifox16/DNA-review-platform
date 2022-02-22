@@ -12,6 +12,7 @@ const useCreatePost = () => {
         // console.log('login');
         useAxios(CREATE_POST_QUERY, {post: data}, token)
         .then(res => {
+            console.log(res)
             if( res.data.data.createPost === null){
                 console.error(res.data.errors.messages);
                 return ;

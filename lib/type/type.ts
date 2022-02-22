@@ -39,7 +39,7 @@ export type Author = {
 
 export type PostInput = {
     slug:string
-    tags: Tag[]
+    tags: string[]
     content:string
 }
 

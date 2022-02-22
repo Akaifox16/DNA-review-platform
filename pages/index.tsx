@@ -14,7 +14,7 @@ const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
     <Container>
       <Row>
         <Col>
-          <Posts postsDetail={ postsDetail } />
+          <Posts postlist={ postsDetail.postlist } />
         </Col>
         <Col>
           <Row>
@@ -42,7 +42,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
       props: {
-          postsDetail,
+          postsDetail: {
+            postlist: postsDetail
+          },
           commuDetail: communities,
           ranks: ranking,
       },

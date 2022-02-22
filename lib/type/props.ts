@@ -3,9 +3,13 @@ import { Tag } from "react-tag-input"
 import { Comment } from "."
 
 export type HomepageProps = {
-    postsDetail: PostCardProps[]
+    postsDetail: PostCardListProps
     commuDetail: CardProps[]
     ranks: CardProps[]
+}
+
+export type PostCardListProps = {
+    postlist: PostCardProps[]
 }
 
 export type OverrideSectionProps ={

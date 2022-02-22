@@ -1,4 +1,5 @@
-export type {   PostCardProps, 
+export type {   PostCardProps,
+                PostCardListProps, 
                 HomepageProps,
                 SlugProps,
                 SideSectionProps,

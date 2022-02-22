@@ -42,7 +42,7 @@ const Post = () => {
                         </Col>
                     </Row>
                 </Container>       
-                <Posts postsDetail={ postsDetail }/>    
+                <Posts postlist={ postsDetail }/>    
             </Stack>
         </div>
     );

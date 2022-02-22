@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { Button, Stack } from "react-bootstrap";
-import { PostsDetailProps } from "../../lib/type";
+import { PostCardListProps } from "../../lib/type";
 import PostCard from "./PostCard";
 
-const PostList = ({ postsDetail }:PostsDetailProps) => {
+const PostList = ({ postlist }:PostCardListProps) => {
     return (
         <div>
             <Stack gap={3}>
                 {
-                    postsDetail.map(post => {
+                    postlist.map(post => {
                         const { id, title, owner} = post
                         return (
                             <Link href={`/post/${title}`} > 
-                                <Button variant="outline-primary" class="postButton">
+                                <Button variant="outline-primary" >
                                     <PostCard id={id} title={title} owner={owner} />
                                 </Button>
                             </Link>

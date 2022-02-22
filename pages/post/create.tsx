@@ -44,7 +44,7 @@ const CreatePost = () => {
                         }}
                         onClickSuccess={e => {
                             post({slug: title.replace(/\s/g, '-'),
-                                tags,
+                                tags: tags.map(tag => tag.text),
                                 content: value === undefined ? '' : value}, token.token);
                         }}
                     />
