@@ -50,3 +50,9 @@ export type Tag = {
     id: string;
     text: string;
 }
+
+export type Community = {
+    id : string;
+    name : string;
+    posts : Post[];
+}

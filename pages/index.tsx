@@ -37,10 +37,21 @@ export const getStaticProps: GetStaticProps = async () => {
       const { slug, owner: { name }, id } = post
       return { id, title: slug, owner: name };
   })
+  // const { data2 }: Response = await useAxios(COMMU_QUERY,{},'');
+  // const communityDetail = data2.commus.map(commu => {
+  //     const {id, name, posts} = commu
+  //     return {id, name, posts}
+  // })
+  const communityDetail = {
+            id: 12,
+            name: "47 Community",
+            Post: [],
+  }
   
   return {
       props: {
           postsDetail,
+          communityDetail,
       },
   };
 };

@@ -12,4 +12,5 @@ export type {   Post,
                 Comment,
                 PostInput,
                 CommentCreateInput,
-                Tag,  } from './type'
+                Tag,
+                Community,  } from './type'
