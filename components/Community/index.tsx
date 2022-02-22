@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button, Stack } from "react-bootstrap";
 import { PostsDetailProps } from "../../lib/type";
-// import PostCard from "./PostCard";
+import PostCard from "../Post/PostCard";
 
 const PostList = ({ postsDetail }:PostsDetailProps) => {
     return (
@@ -13,7 +13,7 @@ const PostList = ({ postsDetail }:PostsDetailProps) => {
                         return (
                             <Link href={`/post/${title}`} > 
                                 <Button variant="outline-primary">
-                                    {/* <PostCard id={id} title={title} owner={owner} /> */}
+                                    <PostCard id={id} title={title} owner={owner} />
                                 </Button>
                             </Link>
                         );
