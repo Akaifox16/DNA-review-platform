@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <LoginContext.Provider value={ { token, setToken } }>
       {
+        
         getLayout(
           <Component {...pageProps} />
         )

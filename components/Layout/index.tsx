@@ -14,8 +14,10 @@ type LayoutProps = ({
 
 const Layout: LayoutProps = ({ children }) => {
     return (
-        <Stack gap={3}>
+        <Stack gap={3} class = "homepages">
+            
             <Navbar />
+            
             <main>{ children }</main>
             <Footer />
         </Stack>

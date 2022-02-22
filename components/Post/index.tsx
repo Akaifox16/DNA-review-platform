@@ -12,7 +12,7 @@ const PostList = ({ postsDetail }:PostsDetailProps) => {
                         const { id, title, owner} = post
                         return (
                             <Link href={`/post/${title}`} > 
-                                <Button variant="outline-primary">
+                                <Button variant="outline-primary" class="postButton">
                                     <PostCard id={id} title={title} owner={owner} />
                                 </Button>
                             </Link>

@@ -10,8 +10,8 @@ const CommentCard = ({ id, content, owner }: Comment) => {
     const author = useOwnerChecker( owner.name );
 
     return (
-        <div key={id}>
-            <Card style={{ width: '18rem' }}>
+        <div key={id} >
+            <Card style={{ width: '18rem',  }} class="commuCard">
                 { 
                     author && 
                     <CommentDropdown />

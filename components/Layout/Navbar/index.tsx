@@ -16,7 +16,10 @@ const Navbar = () => {
             <Row>
                 <Col>
                     <Link href='/'>
-                        <Button className="secondary" >DNA</Button>
+                        <Button className="secondary" type="submit" class="logo" >
+                        <img src="https://i.imgur.com/wGqCqjJ.png" width="65" height="65" />
+                        
+                        </Button>
                     </Link>
                 </Col>
                 <Col xs={6}>
@@ -28,7 +31,7 @@ const Navbar = () => {
                             <Link href='/post'>
                                 <Button 
                                 className="secondary" >
-                                    Posts
+                                    My Posts
                                 </Button>
                             </Link>
                         </Col>
