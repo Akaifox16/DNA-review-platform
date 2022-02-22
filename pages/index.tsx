@@ -2,14 +2,15 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { Posts, CommunitySection, RankingSection } from '../components' ;
+import { Posts, CommunitySection, RankingSection, Communitys } from '../components' ;
 import { useDetectUser, useLayout, useAxios } from '../hooks' ;
 import { POSTS_QUERY } from "../lib/query";
 import { PostsDetailProps, Response } from '../lib/type';
+import { CommunityDetailProps } from '../lib/type/props';
 
 import styles from '../styles/Home.module.scss' ;
 
-const Home = ({ postsDetail }:PostsDetailProps ) => {
+const Home = ({ postsDetail }:PostsDetailProps ,{commusDetail}:CommunityDetailProps) => {
   return (
     <Container>
       <Row>
@@ -18,7 +19,7 @@ const Home = ({ postsDetail }:PostsDetailProps ) => {
         </Col>
         <Col>
           <Row>
-            <CommunitySection />
+            <Communitys commusDetail={commusDetail}  />
           </Row>
           <Row>
             <RankingSection />
@@ -42,7 +43,7 @@ export const getStaticProps: GetStaticProps = async () => {
   //     const {id, name, posts} = commu
   //     return {id, name, posts}
   // })
-  const communityDetail = {
+  const commusDetail = {
             id: 12,
             name: "47 Community",
             Post: [],
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
       props: {
           postsDetail,
-          communityDetail,
+          commusDetail,
       },
   };
 };
