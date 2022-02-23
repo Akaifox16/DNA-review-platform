@@ -4,7 +4,7 @@ export type Post = {
     owner: Author
     content: string
     comments: Comment[]
-    tags: Tag[]
+    tags: string[]
 }
 
 export type Token = {

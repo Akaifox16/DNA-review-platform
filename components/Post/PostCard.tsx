@@ -2,7 +2,9 @@ import Image from "next/image";
 import { Col, Container, Row, Button, Stack } from "react-bootstrap";
 import { PostCardProps } from "../../lib/type";
 
-const PostCard = ({ id, owner, title }: PostCardProps) => {
+const PostCard = ({ owner, tags, title }: PostCardProps) => {
+    // console.log(tags)
+
     return (
         
         <Stack direction="horizontal"  gap={3} className="postCard">
@@ -10,7 +12,7 @@ const PostCard = ({ id, owner, title }: PostCardProps) => {
             <Image src='/vercel.svg' width={124} height={124}/>
             <Stack gap={3}>
                 <div>Product Name: { title }</div>
-                <div>Score: </div>
+                <div>Tag: {tags.join(' ')}</div>
                 <div>Reviewer: { owner }</div>
             </Stack>
         </Stack>

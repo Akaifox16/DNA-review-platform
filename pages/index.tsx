@@ -11,6 +11,8 @@ import { HomepageProps, Response } from '../lib/type';
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   const { filter } = useSearchContext();
+
+  // console.log(postsDetail.postlist);
   
   return (
     <Container className={styles.homepages}>
@@ -64,10 +66,13 @@ const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data: { data: { posts, communities, ranking }} }: Response =  await useAxios(HOMEPAGE_QUERY, {} , '');
   const postsDetail = posts.map(post => {
-      const { slug, owner: { name }, id } = post;
-      return { id, title: slug, owner: name };
+      const { slug, owner: { name }, id, tags } = post;
+      return {id, 
+              title: slug, 
+              tags, 
+              owner: name };
   })
-
+  // console.log(postsDetail)
   return {
       props: {
           postsDetail: {

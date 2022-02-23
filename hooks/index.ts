@@ -20,6 +20,7 @@ export { default as useSearchContext } from './Context/useSearchContext';
 
 //Post
 export { default as useCreatePost } from './Post/useCreatePost';
+export { default as useEditPost } from './Post/useEditPost';
 
 //Comment
 export { default as useCreateComment } from './Post/Comment/useCreateComment';
