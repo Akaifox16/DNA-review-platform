@@ -5,7 +5,9 @@ import styles from '../../styles/Home.module.scss' ;
 
 const Card= ({ name }: CardProps) => {
     return (
-        <Container className={styles.cardContain}>
+        <div>
+           
+                    <Container className={styles.cardContain}>
             <Row>
                 {/* <Col>
                     <Image 
@@ -24,6 +26,8 @@ const Card= ({ name }: CardProps) => {
                 </Col>
             </Row>
         </Container>
+        </div>
+
     );
 }
 

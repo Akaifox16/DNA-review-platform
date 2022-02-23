@@ -5,7 +5,7 @@ import { useAuthChecker, useCreateComment } from "../../../hooks";
 import { CommentSectionProps } from "../../../lib/type";
 import MarkdownEditor from "../../MarkdownEditor";
 import CommentCard from "./CommentCard";
-
+import styles from '../../../styles/Post.module.scss' ;
 const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
     const { isLogin, token } = useAuthChecker();
     const [commentList, setComment] = useState(comments);
@@ -14,7 +14,8 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
 
     return (
         <div>
-            <Stack>
+            <div className={styles.com} >
+            <h4>Write your comment</h4>
             {
                 isLogin && 
                 <MarkdownEditor
@@ -46,18 +47,51 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
                         Login
                     </Link> first</p>
             </div>}
+<<<<<<< HEAD
+            </div>
+            <Stack>
+            <div>
+                <h4 className={styles.tt} > Comment</h4>
+            </div>
+            <div className={styles.com1} >
+                {
+                    commentList.map( (comment,index) => {
+                        const { content, owner, id } = comment;
+                        return (
+                            <div className={styles.bot} >
+                                <div >
+                                    <h4 className={styles.space}>Comment {index+1}</h4>
+                                </div>
+                                <div >
+                                    <CommentCard 
+                                        id={ id }
+                                        content={ content }
+                                        owner={ owner }
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+=======
             {
                 commentList.map( comment => {
-                    const { content, owner, id } = comment;
+                    // const { content, owner, id } = comment;
                     return (
-                        <CommentCard 
-                            id={ id }
-                            content={ content }
-                            owner={ owner }
+                        <CommentCard
+                            token={token.token}
+                            comment={
+                                comment
+                            } 
+                            // id={  }
+                            // content={ content }
+                            // owner={ owner }
                         />
                     );
                 })
             }
+>>>>>>> 898680a109e95b88031fa266912cdf2f1460810a
             </Stack>
             
         </div>

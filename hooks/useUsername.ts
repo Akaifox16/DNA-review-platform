@@ -1,10 +1,10 @@
 import { useStorage } from ".";
 import { TOKEN_KEY } from "../config";
 
-const useUsername = () => {
+const useUsername = ():string => {
     let name
     const { getItem } = useStorage();
-    const token = getItem(TOKEN_KEY, 'session');
+    const token = getItem(TOKEN_KEY, 'local');
     // console.log(token)
     name =  token === undefined || token === ''
     ? ''
