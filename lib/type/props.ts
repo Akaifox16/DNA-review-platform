@@ -45,7 +45,7 @@ export type SlugProps = {
     author: string
     content: string
     comments: Comment[]
-    tags: Tag[]
+    tags: string[]
 }
 
 export type FloatingInputProps = {
