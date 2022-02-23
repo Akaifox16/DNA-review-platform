@@ -8,7 +8,7 @@ import { Response, SlugProps } from "../../lib/type";
 import { useAxios, useLayout, useOwnerChecker } from "../../hooks";
 import { POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
 import { CommentSection } from "../../components";
-
+import styles from '../../styles/Post.module.scss' ;
 
 const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
     const [owner, setOwner] = useState(false);
@@ -19,7 +19,8 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
     }, [])
     
     return (
-        <Stack>
+        <div >
+            <Stack className={styles.cv}>
             {
                 owner && 
                 <Dropdown>
@@ -36,18 +37,23 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
                 </Dropdown>
             }
             <article>
-                <ReactMarkdown 
+                <ReactMarkdown className={styles.cv}
                     children={ `${content}` }
                     components= {{
-                        img: ({node, src, ...props}) => <img
+                        img: ({node, src, ...props}) => <center>
+                                                        <img
                                                         src={src as string}
                                                         width={700} 
+                                                        
                                                         />
+                                                        </center>
                     }}
                 />
             </article>
             <CommentSection comments={ comments }  pid={id} />
         </Stack>
+        </div>
+
     );
 }
 
