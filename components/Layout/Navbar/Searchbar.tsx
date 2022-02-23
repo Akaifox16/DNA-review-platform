@@ -10,10 +10,10 @@ const Searchbar = () => {
     return (
         <div className="d-flex justify-content-center h-100">
         <div className={styles.searchbar}>
-            <Input 
+            <input 
                 className={styles.search_input}
-                controlId="searchbar"
-                label=""
+                // controlId="searchbar"
+                // label=""
                 type=""
                 onChange={(e)=>{
                     setFilter(e.target.value);
