@@ -47,6 +47,7 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
                         Login
                     </Link> first</p>
             </div>}
+<<<<<<< HEAD
             </div>
             <Stack>
             <div>
@@ -73,6 +74,24 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
                     })
                 }
             </div>
+=======
+            {
+                commentList.map( comment => {
+                    // const { content, owner, id } = comment;
+                    return (
+                        <CommentCard
+                            token={token.token}
+                            comment={
+                                comment
+                            } 
+                            // id={  }
+                            // content={ content }
+                            // owner={ owner }
+                        />
+                    );
+                })
+            }
+>>>>>>> 898680a109e95b88031fa266912cdf2f1460810a
             </Stack>
             
         </div>

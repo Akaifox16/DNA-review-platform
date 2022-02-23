@@ -4,6 +4,7 @@ import { PostCardListProps } from "../../lib/type";
 import PostCard from "./PostCard";
 import styles from '../../styles/Home.module.scss' ;
 const PostList = ({ postlist }:PostCardListProps) => {
+    console.log(postlist)
     return (
         <div>
             <Stack gap={3}>

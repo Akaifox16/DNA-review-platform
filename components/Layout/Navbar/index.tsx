@@ -4,11 +4,15 @@ import Image from "next/image";
 import { Button, Row, Col, Container } from "react-bootstrap";
 
 import Searchbar from "./Searchbar";
-import { useAuthChecker, useDetectUser, useUsername } from '../../../hooks';
+import { useAuthChecker, useDetectUser, useStorage, useUsername } from '../../../hooks';
 import UserDropdown from "./UserDropdown";
+import { TOKEN_KEY } from "../../../config";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
     const { isLogin } = useAuthChecker();
+    const { removeItem } = useStorage();
+    const router = useRouter();
     useDetectUser();
     const username = useUsername();
 
@@ -51,7 +55,16 @@ const Navbar = () => {
                 </Col>
                 <Col>
                     {isLogin &&
-                        <UserDropdown username={username}/>
+                        <Button variant="danger"
+                        onClick={e => {
+                            e.preventDefault();
+                            removeItem(TOKEN_KEY, 'local');
+                            router.push('/');
+                            router.reload();
+                        }}>
+                            logout
+                        </Button>
+                        // <UserDropdown username={username}/>
                     }
                     
                     {!isLogin && 

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import { Tag } from "react-tag-input"
-import { Comment } from "."
+import { Comment, Dislike, Like } from "."
 
 export type HomepageProps = {
     postsDetail: PostCardListProps
@@ -39,6 +39,9 @@ export type CardProps = {
 
 export type SlugProps = {
     id: string
+    title: string
+    likes: Like[]
+    dislikes: Dislike[]
     author: string
     content: string
     comments: Comment[]
@@ -69,4 +72,33 @@ export type CommentSectionProps = {
 export type TagsInputProps = {
     tags: Tag[]
     setTags: Dispatch<SetStateAction<Tag[]>>
+}
+
+export enum LDtype {
+    Post,
+    Comment
+}
+
+export type LDBtnProps ={
+    likes: Like[]
+    dislikes: Dislike[]
+    owner: string
+    id: string
+}
+
+export type LikeDislikeProps = {
+    owner: string
+    like: string
+    id: string
+    dislike: string
+    unlike: string
+    undislike: string
+    likes: Like[]
+    dislikes: Dislike[]
+    type: LDtype
+}
+
+export type CommentCardProps ={
+    token: string
+    comment: Comment
 }
