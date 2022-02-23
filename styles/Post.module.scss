@@ -86,7 +86,7 @@
 .space{
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 30px;
+    padding-left: 10px;
 }
 .txt{
     padding-top: 10px;
@@ -105,14 +105,47 @@
     background-color: #F1F1F1;
     border-radius: 15px;
 }
-.com1{
-    margin: auto;
-    width: 70%;
-    // padding: 30px;
-    border-radius: 15px;
-}
 .cap{
     background-color: #F1F1F1;
     border: none;
     padding-left: 20px;
+}
+.like{
+    padding: 20px;
+}
+.com1{
+    margin: auto;
+    width: 70%;
+    // background-color: #F1F1F1;
+    // padding: 30px;
+    border-radius: 15px;
+    // margin-bottom: 50px;
+}
+.cut{
+    margin-bottom: 10px;
+}
+.ed{
+    padding-right: 10px;
+    display: table;
+    right: initial;
+    right: 0px;
+    width: 25%;
+    position: absolute;
+    padding-top: 20px;
+}
+.inl{
+    display: inline-flex; 
+    gap: max-content;
+    // padding-right: 10px; 
+}
+.ho{
+    display: inline-flex;
+
+    padding-top: 20px;
+}
+.ins{
+    margin-left: 10px;
+}
+.ds{
+    padding: 20px;
 }

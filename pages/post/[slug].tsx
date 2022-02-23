@@ -21,23 +21,33 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
     return (
         <div >
             <Stack className={styles.cv}>
-            {
-                owner && 
-                <Dropdown>
-                    <Dropdown.Toggle>
-                        <Image 
-                        src={'/favicon.ico'}
-                        width={20}
-                        height={20} />
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Edit</Dropdown.Item>
-                        <Dropdown.Item>Delete</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            }
-            <h1>{title}</h1>
             <div className={styles.mid} >
+                <div className={styles.inl} >
+                    <div>
+                        <h1 className={styles.tag}>{title}</h1>
+                    </div>
+                    <div className={styles.ed} >
+                        {
+                            owner && 
+                            <Dropdown>
+                                <Dropdown.Toggle>
+                                    <Image 
+                                    src={'/favicon.ico'}
+                                    width={20}
+                                    height={20} />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>Edit</Dropdown.Item>
+                                    <Dropdown.Item>Delete</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        }
+                    </div>
+                    <div>
+
+                    </div>
+
+                </div>
             <article>
                 <div className={styles.tag}>
                     #{tags}
@@ -45,24 +55,24 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                 <ReactMarkdown className={styles.cv}
                     children={ `${content}` }
                     components= {{
-                        img: ({node, src, ...props}) => <center>
+                        img: ({node, src, ...props}) => 
                                                         <img className={styles.pic}
                                                         src={src as string}
                                                         width={700} 
                                                         
                                                         />
-                                                        </center>
+                                                        
                     }}
                 />
-            </article>
-            </div>
-            <div>
+            <div className={styles.like}>
                 <PostLDBtn 
                     owner={token.token}
                     id={id}
                     likes={likes}
                     dislikes={dislikes}
                 />
+            </div>
+            </article>
             </div>
             <div>
                 <h4 className={styles.tt} > Write Comment</h4>

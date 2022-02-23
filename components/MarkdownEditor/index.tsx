@@ -25,8 +25,8 @@ const MarkdownEditor = ({   value, setValue,
             }}
         />
         <div className={styles.but}>
-            <div  >
-                <Stack direction='horizontal' >
+            <div  className={styles.ho}>
+                {/* <Stack direction='horizontal' > */}
                     <Button 
                         variant="secondary"
                         onClick={onClickCancel}>
@@ -38,7 +38,7 @@ const MarkdownEditor = ({   value, setValue,
                         onClick={onClickSuccess}>
                         { confirmText }
                     </Button>
-                </Stack>
+                {/* </Stack> */}
             </div>
 
         </div>

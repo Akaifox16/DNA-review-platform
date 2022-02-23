@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Card } from "react-bootstrap";
+import { Card, Stack } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import { CommentLDBtn } from '../..';
 import { useOwnerChecker } from "../../../hooks";
@@ -14,31 +14,37 @@ const CommentCard = ({ token, comment: { id, content, owner, likes, dislikes }}:
 
     return (
         <div key={id}>
-            <Card  className={styles.cap}>
+            {/* <Card  className={styles.ins}> */}
+                <div className={styles.ds} >
                 { 
                     author && 
                     <CommentDropdown />
                 }
-                <Card.Text>
-                    <ReactMarkdown 
-                        children={ content } 
-                        components= {{
-                            img: ({node, src, ...props}) => <Image
-                            src={src as string}
-                            width={200} 
-                            height={200}
+                    {/* <Card.Text> */}
+                        <ReactMarkdown 
+                            children={ content } 
+                            components= {{
+                                img: ({node, src, ...props}) => <Image
+                                src={src as string}
+                                width={20} 
+                                height={20}
+                                />
+                            }}
+                        />
+                    {/* </Card.Text> */}
+                </div>
+                <div className={styles.ins} >
+                    <Stack gap={3} direction='horizontal' >    
+                        <CommentLDBtn 
+                            likes={likes}
+                            dislikes={dislikes}
+                            owner={token}
+                            id={id}
                             />
-                        }}
-                    />
-                <CommentLDBtn 
-                    likes={likes}
-                    dislikes={dislikes}
-                    owner={token}
-                    id={id}
-                />
-                </Card.Text>
-                    <p>{ owner.name }</p>
-            </Card>
+                            <p>{ owner.name }</p>
+                    </Stack>
+                </div>
+            {/* </Card> */}
         </div>
     );
 }
