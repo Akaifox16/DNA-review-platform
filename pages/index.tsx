@@ -3,18 +3,24 @@ import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { Posts, CommunitySection, RankingSection } from '../components' ;
-import { useLayout, useAxios } from '../hooks' ;
+import { useLayout, useAxios, useSearchContext } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
 import { HomepageProps, Response } from '../lib/type';
 
-import styles from '../styles/Home.module.scss' ;
+// import styles from '../styles/Home.module.scss' ;
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
+  const { filter } = useSearchContext();
+  
   return (
     <Container>
       <Row>
         <Col>
-          <Posts postlist={ postsDetail.postlist } />
+          <Posts postlist={ filter.length !== 0 
+          ? postsDetail.postlist.filter(post => {
+            return post.title.toLowerCase().includes(filter.toLowerCase())
+          })
+          : postsDetail.postlist } />
         </Col>
         <Col>
           <Row>

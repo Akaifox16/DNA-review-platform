@@ -16,6 +16,7 @@ export { default as useAuthChecker } from './Auth/useAuthChecker';
 
 // Context
 export { default as useLoginContext } from './Context/useLoginContext';
+export { default as useSearchContext } from './Context/useSearchContext';
 
 //Post
 export { default as useCreatePost } from './Post/useCreatePost';

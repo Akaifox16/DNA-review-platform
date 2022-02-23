@@ -1,11 +1,23 @@
+import { Button } from "react-bootstrap";
+import { Input } from "../..";
+import { useSearchContext } from "../../../hooks";
 
 const Searchbar = () => {
+    const { setFilter } = useSearchContext();
+
     return (
         <div>
-            <input
-                placeholder='Search'
-                type='text'
+            <Input 
+                controlId="searchbar"
+                label=""
+                type=""
+                onChange={(e)=>{
+                    setFilter(e.target.value);
+                }}
             />
+            <Button>
+                search
+            </Button>
         </div>
     );
 }
