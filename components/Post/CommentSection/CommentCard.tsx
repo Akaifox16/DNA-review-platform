@@ -5,30 +5,30 @@ import { useOwnerChecker } from "../../../hooks";
 
 import { Comment } from "../../../lib/type";
 import CommentDropdown from "./CommentDropdown";
-
+import styles from '../../../styles/Post.module.scss' ;
 const CommentCard = ({ id, content, owner }: Comment) => {
     const author = useOwnerChecker( owner.name );
 
     return (
-        <div key={id} >
-            <Card style={{ width: '18rem',  }} class="commuCard">
+        <div key={id}>
+            <Card  className={styles.cap}>
                 { 
                     author && 
                     <CommentDropdown />
                 }
-                <Card.Title>{ owner.name }</Card.Title>
                 <Card.Text>
                     <ReactMarkdown 
                         children={ content } 
                         components= {{
                             img: ({node, src, ...props}) => <Image
-                                                            src={src as string}
-                                                            width={200} 
-                                                            height={200}
-                                                            />
+                            src={src as string}
+                            width={200} 
+                            height={200}
+                            />
                         }}
-                    />
+                        />
                 </Card.Text>
+                    <p>{ owner.name }</p>
             </Card>
         </div>
     );

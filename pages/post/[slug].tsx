@@ -36,21 +36,31 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
                     </Dropdown.Menu>
                 </Dropdown>
             }
-            <article>
-                <ReactMarkdown className={styles.cv}
-                    children={ `${content}` }
-                    components= {{
-                        img: ({node, src, ...props}) => <center>
-                                                        <img
-                                                        src={src as string}
-                                                        width={700} 
+            <div className={styles.mid} >
+                <article>
+                    <div className={styles.tag}>
+                        #{tags}
+                    </div>
+                    <ReactMarkdown className={styles.cv}
+                        children={ `${content}` }
+                       components= {{
+                            img: ({node, src, ...props}) => 
+                                                            <img className={styles.pic}
+                                                            src={src as string}
+                                                            width={700} 
+                                                            />
                                                         
-                                                        />
-                                                        </center>
-                    }}
-                />
-            </article>
-            <CommentSection comments={ comments }  pid={id} />
+                        }}
+                    />
+                </article>
+            </div>
+            <div>
+                
+                    <h4 className={styles.tt} > Write Comment</h4>
+            </div>
+            <div >
+                <CommentSection comments={ comments }  pid={id} />
+            </div>
         </Stack>
         </div>
 

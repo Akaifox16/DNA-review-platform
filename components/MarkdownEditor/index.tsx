@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { Button, Stack } from "react-bootstrap";
 import { MarkdownEditorProps } from "../../lib/type";
 import rehypeSanitize from 'rehype-sanitize';
-
+import styles from '../../styles/Post.module.scss' ;
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor"),
     { ssr: false }
@@ -24,19 +24,23 @@ const MarkdownEditor = ({   value, setValue,
                 rehypePlugins: [[rehypeSanitize]]
             }}
         />
-        <div>
-            <Stack direction='horizontal' >
-                <Button
-                    variant="secondary"
-                    onClick={onClickCancel}>
-                    cancel
-                </Button>
-                <Button
-                    variant="success"
-                    onClick={onClickSuccess}>
-                    { confirmText }
-                </Button>
-            </Stack>
+        <div className={styles.but}>
+            <div  >
+                <Stack direction='horizontal' >
+                    <Button 
+                        variant="secondary"
+                        onClick={onClickCancel}>
+                        cancel
+                    </Button>
+                    <div className={styles.padd}> </div>
+                    <Button
+                        variant="success"
+                        onClick={onClickSuccess}>
+                        { confirmText }
+                    </Button>
+                </Stack>
+            </div>
+
         </div>
         </div>
     );

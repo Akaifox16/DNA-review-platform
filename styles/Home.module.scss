@@ -10,16 +10,35 @@
     border: none;
     color: red;
 }
+.headNew{
+    
+    background-color: #B762C1;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 40px;
+
+}
+.headNew1{
+    
+    padding-top: 5px;
+    margin-left: 20px;
+    
+}
 .postCard{
-    background-color: #FFFFFF;
+    margin-left: 20px;
+    background-color: #ffffff;
     border-radius: 12px;
     border: none;
     color:black;
     margin-right: 30px;
+    
 }
 .postCard:hover{
-    color:red
+    color:black
+    
+    
 }
+
 .postbutton:hover{
     background-color: green; /* Green */
     color: black;
@@ -31,6 +50,10 @@
     border-radius: 12px;
     
   }
+.showCard{
+    background-color: #EA99D5;
+    border-radius: 12px;
+}
 .cardContain{
     background-color: #d6d6d6;
     border-radius: 12px;
@@ -40,21 +63,49 @@
 }
 .cardContain:hover{
     
-    color:#B762C1;
+    color:#d6d6d6;
 
 }
-
+.Show{
+    background-color: white;
+    border:none
+}
 .homepages{
     background-color: #d6d6d6;
 }
 .rankingSec{
+    padding: 5px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;
 }
 .commuCard{
+    padding: 5px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;
     color:black;
+}
+.ll{
+    //margin:auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   // padding: 10px;
+    // padding-left: 10px;
+    // background-color: #F6EFEF;
+    // border-radius: 12px;
+}
+.k{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // left: 2.86%;
+    // right: 73.03%;
+    // top: 5.92%;
+    // bottom: 5.8%;
+    width: 100px;
+    height: 100px;
+    background: rgba(247, 239, 239, 0.85);
+    border-radius: 15px;
+    color :#d6d6d6;
 }
