@@ -26,6 +26,27 @@ query{
 	}
 }
 `
+export const ALLUSER_QUERY =`
+query{
+	ranking{
+		name
+	}
+}
+`
+
+export const USER_QUERY =`
+query{
+	userById{
+		name
+		email
+		bio
+		contact
+		likes
+		dislikes
+	}
+}
+`
+
 
 export const POSTS_QUERY = `
 query{

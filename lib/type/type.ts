@@ -21,10 +21,22 @@ export type Response = {
             posts: Post[]
             post: Post
             communities: Community[]
+            users: User[]
+            userById: User
             ranking: {name: String}[]
             commuPosts: Post[]
         }
     }
+}
+
+export type User = {
+    id : string
+    name: string
+    email: string
+    bio: string
+    contact: string
+    likes: number
+    dislikes: number
 }
 
 export type Comment = {

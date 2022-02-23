@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button, Stack } from "react-bootstrap";
 import { PostCardListProps } from "../../lib/type";
 import PostCard from "./PostCard";
-
+import styles from '../../styles/Home.module.scss' ;
 const PostList = ({ postlist }:PostCardListProps) => {
     return (
         <div>
