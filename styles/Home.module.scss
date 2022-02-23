@@ -63,24 +63,30 @@
 }
 .cardContain:hover{
     
-    color:#d6d6d6;
+    color:#000000;
 
+}
+.allpostCard{
+    background-color: white;
+    border-radius: 12px;
 }
 .Show{
     background-color: white;
+    color:black;
     border:none
+    
 }
 .homepages{
     background-color: #d6d6d6;
 }
 .rankingSec{
-    padding: 5px;
+    padding: 10px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;
 }
 .commuCard{
-    padding: 5px;
+    padding: 10px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;

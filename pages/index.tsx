@@ -18,13 +18,13 @@ const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
     <Container className={styles.homepages}>
       <Row>
         <Col>
-          <div className={styles.postCard}>
+          <div className={styles.allpostCard}>
             <div className={styles.headNew}>
               <h4 className={styles.headNew1}>Newest</h4>
             </div>
           
             
-            <Posts postlist={ filter.length !== 0 
+            <Posts  postlist={ filter.length !== 0 
             ? postsDetail.postlist.filter(post => {
               return post.title.toLowerCase().includes(filter.toLowerCase())
             })
