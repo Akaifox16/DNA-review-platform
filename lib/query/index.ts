@@ -111,6 +111,16 @@ export const POST_BY_ID_QUERY = `
 query($slug: String!){
 	post(slug: $slug){
 		id
+		likes{
+			owner{
+				name
+			}
+		}
+		dislikes{
+			owner{
+				name
+			}
+		}
 		owner{
 			name
 		}
@@ -162,3 +172,163 @@ query($slug: String!){
 	}
 }
 `;
+
+export const  LIKE_POST_QUERY =`
+mutation($pid: ID!){
+	likePost(pid: $pid){
+		id
+		slug
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		owner{
+			name
+		}
+	}
+}
+`
+
+export const  UNLIKE_POST_QUERY =`
+mutation($pid: ID!){
+	unlikePost(pid: $pid){
+		id
+		slug
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		owner{
+			name
+		}
+	}
+}
+`
+
+export const  DISLIKE_POST_QUERY =`
+mutation($pid: ID!){
+	dislikePost(pid: $pid){
+		id
+		slug
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		owner{
+			name
+		}
+	}
+}
+`
+
+export const  UNDISLIKE_POST_QUERY =`
+mutation($pid: ID!){
+	undislikePost(pid: $pid){
+		id
+		slug
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		owner{
+			name
+		}
+	}
+}
+`
+
+export const  LIKE_COMMENT_QUERY =`
+mutation($cid: ID!){
+	likeComment(cid: $cid){
+		likes{
+			owner{
+				name
+			}
+		}
+		dislikes{
+			owner{
+				name
+			}
+		}
+		content
+	}
+}
+`
+
+export const  UNLIKE_COMMENT_QUERY =`
+mutation($cid: ID!){
+	unlikeComment(cid: $cid){
+		likes{
+			owner{
+				name
+			}
+		}
+		dislikes{
+			owner{
+				name
+			}
+		}
+		content
+	}
+}
+`
+
+export const  DISLIKE_COMMENT_QUERY =`
+mutation($cid: ID!){
+	dislikeComment(cid: $cid){
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		content
+	}
+}
+`
+
+export const  UNDISLIKE_COMMENT_QUERY =`
+mutation($cid: ID!){
+	undislikeComment(cid: $cid){
+		dislikes{
+			owner{
+				name
+			}
+		}
+		likes{
+			owner{
+				name
+			}
+		}
+		content
+	}
+}
+`

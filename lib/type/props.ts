@@ -39,6 +39,9 @@ export type CardProps = {
 
 export type SlugProps = {
     id: string
+    title: string
+    likes: Like[]
+    dislikes: Dislike[]
     author: string
     content: string
     comments: Comment[]
@@ -71,7 +74,26 @@ export type TagsInputProps = {
     setTags: Dispatch<SetStateAction<Tag[]>>
 }
 
-export type LikeDislikeProps = {
+export enum LDtype {
+    Post,
+    Comment
+}
+
+export type LDBtnProps ={
     likes: Like[]
     dislikes: Dislike[]
+    owner: string
+    id: string
+}
+
+export type LikeDislikeProps = {
+    owner: string
+    like: string
+    id: string
+    dislike: string
+    unlike: string
+    undislike: string
+    likes: Like[]
+    dislikes: Dislike[]
+    type: LDtype
 }

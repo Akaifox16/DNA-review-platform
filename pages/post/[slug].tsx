@@ -5,14 +5,14 @@ import ReactMarkdown from "react-markdown";
 import { Dropdown, Stack } from 'react-bootstrap';
 
 import { Response, SlugProps } from "../../lib/type";
-import { useAxios, useLayout, useOwnerChecker } from "../../hooks";
+import { useAuthChecker, useAxios, useLayout, useOwnerChecker, useUsername } from "../../hooks";
 import { POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
-import { CommentSection } from "../../components";
+import { PostLDBtn, CommentSection } from "../../components";
 import styles from '../../styles/Post.module.scss' ;
 
-const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
+const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : SlugProps) => {
     const [owner, setOwner] = useState(false);
-    
+    const { token } = useAuthChecker();
     useEffect(()=> {
             const isOwner = useOwnerChecker(author);
             setOwner(isOwner);
@@ -36,6 +36,7 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
                     </Dropdown.Menu>
                 </Dropdown>
             }
+            <h1>{title}</h1>
             <article>
                 <ReactMarkdown className={styles.cv}
                     children={ `${content}` }
@@ -50,6 +51,12 @@ const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
                     }}
                 />
             </article>
+            <PostLDBtn 
+                owner={token.token}
+                id={id}
+                likes={likes}
+                dislikes={dislikes}
+            />
             <CommentSection comments={ comments }  pid={id} />
         </Stack>
         </div>
@@ -74,11 +81,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     if(params !== undefined){
         const { data }: Response = await useAxios(POST_BY_ID_QUERY, {slug: params.slug}, '');
-        const { id, owner: { name }, content, comments, tags } = data.data.post
+        const { id, owner: { name }, content, comments, tags, likes, dislikes } = data.data.post
         
         return {
             props:{
                 id,
+                title: params.slug?.split('-').join(' '),
+                likes,
+                dislikes,
                 author: name,
                 content,
                 comments,

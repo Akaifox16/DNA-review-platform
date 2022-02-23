@@ -6,6 +6,7 @@ export type {   PostCardProps,
                 UserDropdownProps,
                 CardProps,
                 LikeDislikeProps,
+                LDBtnProps,
                 OverrideSectionProps,
                 FloatingInputProps,
                 MarkdownEditorProps,
@@ -22,3 +23,7 @@ export type {   Post,
                 Like,
                 Dislike,
                 Community,  } from './type'
+
+export {
+    LDtype,
+} from './props'

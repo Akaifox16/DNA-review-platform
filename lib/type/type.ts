@@ -3,6 +3,8 @@ export type Post = {
     slug: string
     owner: Author
     content: string
+    likes: Like[]
+    dislikes: Dislike[]
     comments: Comment[]
     tags: string[]
 }
@@ -25,6 +27,15 @@ export type Response = {
             userById: User
             ranking: {name: String}[]
             commuPosts: Post[]
+            likeComment: Comment
+            unlikeComment: Comment
+            dislikeComment: Comment
+            undislikeComment: Comment
+            likePost: Post
+            unlikePost: Post
+            dislikePost: Post
+            undislikePost: Post
+            
         }
     }
 }
@@ -43,6 +54,8 @@ export type Comment = {
     id: string
     content: string
     owner: Author
+    likes: Like[]
+    dislikes: Dislike[]
 }
 
 export type Author = {
@@ -72,9 +85,7 @@ export type Community = {
     posts : Post[];
 }
 
-export type ownerLike = {
-    name: string
-}
+export type ownerLike = string
 
 export type Like = ownerLike
 
