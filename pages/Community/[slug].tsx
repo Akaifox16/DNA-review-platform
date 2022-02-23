@@ -1,22 +1,25 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Col, Container, Row, Stack } from "react-bootstrap";
-import { Posts } from "../../components";
+import { CommentSection, Posts } from "../../components";
+import ChatSection from "../../components/Community/chatSection";
+import chatSection from "../../components/Community/chatSection";
 import { useAxios, useLayout } from "../../hooks";
 import { COMMUNITIES_QUERY, COMMUNITY_POST_QUERY } from "../../lib/query";
-import { Post, PostCardProps, Response } from "../../lib/type";
+import { Comment, Post, PostCardProps, Response } from "../../lib/type";
 
 type Props = {
     params: string
     posts: PostCardProps[]
+    comment: Comment[]
 }
 
-const Slug = ({ params, posts }: Props) => {
+const Slug = ({ params, posts, comment }: Props) => {
 
     return (
         <div>
             {params}
-            <Stack gap={3}>
-                <Container>
+                <Stack gap={3} direction="horizontal">
+                    
                     {/* <Row>
                         <Col sm={8} />
                         <Col>
@@ -24,8 +27,8 @@ const Slug = ({ params, posts }: Props) => {
                         </Col>
                     </Row> */}
                     <Posts postlist={posts} />
-                </Container>
-            </Stack>
+                    <ChatSection comments={comment} pid={""} />
+                </Stack>
         </div>
     );
 }
@@ -46,19 +49,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     if(params !== undefined){
-        const { data: {data: { commuPosts }} }: Response = await useAxios(COMMUNITY_POST_QUERY, {slug: params.slug}, '');
+        const { data: {data: { commuPosts,commuComment }} }: Response = await useAxios(COMMUNITY_POST_QUERY, {slug: params.slug}, '');
         const posts = commuPosts.map(commu => {
             return  {
                 id: commu.id,
                 title: commu.slug,
-                tags: commu.tags,
                 owner: commu.owner.name,
+            }
+        })
+        const comment = commuComment.map(comment => {
+            const { id, content, owner: {name} } = comment;
+            return {
+                id, content, owner: name
             }
         })
         return {
             props:{
                 params: params.slug,
-                posts
+                posts,
+                comment
                 // id,
                 // author: name,
                 // content,

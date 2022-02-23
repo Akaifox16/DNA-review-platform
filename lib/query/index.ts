@@ -170,6 +170,13 @@ query($slug: String!){
 			name
 		}
 	}
+	commuComment(slug: $slug){
+		id
+    	content
+    	owner{
+			name
+		}
+	}
 }
 `;
 

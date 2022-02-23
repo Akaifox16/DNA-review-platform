@@ -35,7 +35,7 @@ export type Response = {
             unlikePost: Post
             dislikePost: Post
             undislikePost: Post
-            
+            commuComment: Comment[]
         }
     }
 }
