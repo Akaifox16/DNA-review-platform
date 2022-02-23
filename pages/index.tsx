@@ -1,25 +1,34 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Image from "next/image";
 import { Posts, CommunitySection, RankingSection } from '../components' ;
-import { useLayout, useAxios } from '../hooks' ;
+import { useLayout, useAxios, useSearchContext } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
 import { HomepageProps, Response } from '../lib/type';
 
-import styles from '../styles/Home.module.scss' ;
+// import styles from '../styles/Home.module.scss' ;
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
+  const { filter } = useSearchContext();
+  
   return (
-    <Container>
+    <Container className={styles.homepages}>
       <Row>
         <Col>
-          <Posts postlist={ postsDetail.postlist } />
+          <Posts postlist={ filter.length !== 0 
+          ? postsDetail.postlist.filter(post => {
+            return post.title.toLowerCase().includes(filter.toLowerCase())
+          })
+          : postsDetail.postlist } />
         </Col>
         <Col>
-          <Row>
-            <RankingSection
+          <Row >
+            <div className={styles.rankingSec}>
+                          <RankingSection
               cardlist={ranks} />
+            </div>
+
           </Row>
           <Row>
             <CommunitySection 
