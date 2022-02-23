@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     if(params !== undefined){
-        const { data: {data: { commuPosts,commuComment }} }: Response = await useAxios(COMMUNITY_POST_QUERY, {slug: params.slug}, '');
+        const { data: {data: { commuPosts,commuComment }} }: Response = await useAxios(COMMUNITY_POST_QUERY, {slug: params.slug.split('-').join(' ')}, '');
         const posts = commuPosts.map(commu => {
             return  {
                 id: commu.id,
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         })
         return {
             props:{
-                params: params.slug,
+                params: params.slug.split('-').join(' '),
                 posts,
                 comment
                 // id,

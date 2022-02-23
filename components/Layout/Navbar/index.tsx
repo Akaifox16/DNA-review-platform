@@ -43,6 +43,13 @@ const Navbar = () => {
                                 </Button>
                             </Link>
                         </Col>
+                        <Col>
+                            <Link href={`/user/${username.replace(/\s/g, '-')}`}>
+                                <button>
+                                    { username }
+                                </button>
+                            </Link>
+                        </Col>
                         {/* <Col>
                         <Link href='/point'>
                             <Button 

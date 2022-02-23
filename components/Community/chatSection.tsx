@@ -18,6 +18,16 @@ const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
         <div>
             <Stack>
             {
+                // commentList.map( comment => {
+                //     const { content, owner, id } = comment;
+                //     return (
+                //         <CommentCard 
+                            
+                //         />
+                //     );
+                // })
+            }
+            {
                 isLogin && 
                 <MarkdownEditor
                     value={ value } height={200}
@@ -44,22 +54,10 @@ const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
             }
             { !isLogin && 
             <div>
-                <p>If you want to comment, please <Link href='/login'>
+                <p>If you want to chat, please <Link href='/login'>
                         Login
                     </Link> first</p>
             </div>}
-            {
-                commentList.map( comment => {
-                    const { content, owner, id } = comment;
-                    return (
-                        <CommentCard 
-                            id={ id }
-                            content={ content }
-                            owner={ owner }
-                        />
-                    );
-                })
-            }
             </Stack>
             
         </div>

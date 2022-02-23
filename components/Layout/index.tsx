@@ -21,7 +21,7 @@ const Layout: LayoutProps = ({ children }) => {
                 <Navbar />
                 <main>{ children }</main>
             </SearchContext.Provider>
-            <Footer />
+            {/* <Footer /> */}
         </Stack>
     );
 }
