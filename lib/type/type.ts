@@ -25,6 +25,7 @@ export type Response = {
             userById: User
             ranking: {name: String}[]
             commuPosts: Post[]
+            commuComment: Comment[]
         }
     }
 }
