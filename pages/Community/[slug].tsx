@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             return  {
                 id: commu.id,
                 title: commu.slug,
+                tags: commu.tags,
                 owner: commu.owner.name,
             }
         })

@@ -71,3 +71,11 @@ export type Community = {
     name : string;
     posts : Post[];
 }
+
+export type ownerLike = {
+    name: string
+}
+
+export type Like = ownerLike
+
+export type Dislike = ownerLike
