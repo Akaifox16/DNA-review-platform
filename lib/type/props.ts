@@ -97,3 +97,8 @@ export type LikeDislikeProps = {
     dislikes: Dislike[]
     type: LDtype
 }
+
+export type CommentCardProps ={
+    token: string
+    comment: Comment
+}

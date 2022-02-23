@@ -48,12 +48,16 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
             </div>}
             {
                 commentList.map( comment => {
-                    const { content, owner, id } = comment;
+                    // const { content, owner, id } = comment;
                     return (
-                        <CommentCard 
-                            id={ id }
-                            content={ content }
-                            owner={ owner }
+                        <CommentCard
+                            token={token.token}
+                            comment={
+                                comment
+                            } 
+                            // id={  }
+                            // content={ content }
+                            // owner={ owner }
                         />
                     );
                 })

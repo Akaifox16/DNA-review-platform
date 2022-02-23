@@ -126,9 +126,20 @@ query($slug: String!){
 		}
 		content
 		comments{
+			id
 			owner{
 				id
 				name
+			}
+			likes{
+				owner{
+					name
+				}
+			}
+			dislikes{
+				owner{
+					name
+				}
 			}
 			content
 		}
@@ -336,6 +347,16 @@ mutation($cid: ID!){
 			}
 		}
 		content
+	}
+}
+`
+
+export const EVALUATE_QUERY =`
+mutation{
+	evaluateScore{
+		name
+		likes
+		dislikes
 	}
 }
 `

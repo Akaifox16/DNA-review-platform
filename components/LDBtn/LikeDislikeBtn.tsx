@@ -1,6 +1,7 @@
 import { UpdownButton, UpdownButtonProps } from '@lyket/react';
 import { useState } from 'react';
 import { useAxios, useUsername } from '../../hooks';
+import { EVALUATE_QUERY } from '../../lib/query';
 import { LDtype, LikeDislikeProps, Response } from "../../lib/type";
 
 enum State {
@@ -58,11 +59,13 @@ const LikeDislikeBtn = ({   owner, id,
             <button 
             onClick={e => {
                 clickUp();
+                useAxios(EVALUATE_QUERY,{}, owner )
             }}>+</button>
             <span>{likes.length - dislikes.length}</span>
             <button
             onClick={e => {
                 clickDown();
+                useAxios(EVALUATE_QUERY,{}, owner )
             }}>-</button>
         </div>
     );

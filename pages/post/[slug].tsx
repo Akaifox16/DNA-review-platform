@@ -83,6 +83,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         const { data }: Response = await useAxios(POST_BY_ID_QUERY, {slug: params.slug}, '');
         const { id, owner: { name }, content, comments, tags, likes, dislikes } = data.data.post
         
+        const newcomments = comments.map(comment => {
+            return {
+                id: comment.id,
+                content: comment.content,
+                owner: comment.owner.name,
+                likes: comment.likes.map(like => {
+                    return like.owner.name;
+                }),
+                dislikes: comment.dislikes.map( dislike => {
+                    return dislike.owner.name;
+                }) ,
+            }
+        });
+
+        console.log(newcomments);
         return {
             props:{
                 id,
