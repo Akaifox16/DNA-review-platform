@@ -21,8 +21,21 @@ query{
 
 export const COMMUNITIES_QUERY =`
 query{
+	userById{
+		id
+
+	}
+}
+`
+export const USER_QUERY =`
+query{
 	communities{
 		name
+		email
+		bio
+		contact
+		likes
+		dislikes
 	}
 }
 `
