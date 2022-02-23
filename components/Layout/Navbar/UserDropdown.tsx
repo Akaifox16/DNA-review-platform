@@ -2,8 +2,9 @@ import { useRouter } from "next/router";
 import { Dropdown } from "react-bootstrap";
 import { TOKEN_KEY } from "../../../config";
 import { useStorage } from "../../../hooks";
+import { UserDropdownProps } from "../../../lib/type";
 
-const UserDropdown = () => {
+const UserDropdown = ( { username }: UserDropdownProps ) => {
     const { removeItem } = useStorage();
     const router = useRouter();
     const clickHandler = (e: { preventDefault: () => void; }) => {
@@ -17,7 +18,7 @@ const UserDropdown = () => {
                     <Dropdown.Toggle
                     variant="success"
                     >
-                        User
+                        { username }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item

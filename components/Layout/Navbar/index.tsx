@@ -1,25 +1,29 @@
-import { ReactElement } from "react";
+// import { ReactElement } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button, Row, Col, Container } from "react-bootstrap";
 
 import Searchbar from "./Searchbar";
-import { useAuthChecker, useDetectUser } from '../../../hooks';
+import { useAuthChecker, useDetectUser, useUsername } from '../../../hooks';
 import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
     const { isLogin } = useAuthChecker();
     useDetectUser();
+    const username = useUsername();
 
     return (
         <Container>
             <Row>
                 <Col>
                     <Link href='/'>
-                        <Button className="secondary" type="submit" class="logo" >
-                        <img src="https://i.imgur.com/wGqCqjJ.png" width="65" height="65" />
-                        
-                        </Button>
+                        {/* <button  > */}
+                        {/* <img src="https://i.imgur.com/wGqCqjJ.png" width="65" height="65" /> */}
+                        <Image 
+                            src={'/Dna_logo.png'}
+                            height={65}
+                            width={65} />
+                        {/* </button> */}
                     </Link>
                 </Col>
                 <Col xs={6}>
@@ -47,7 +51,7 @@ const Navbar = () => {
                 </Col>
                 <Col>
                     {isLogin &&
-                        <UserDropdown />
+                        <UserDropdown username={username}/>
                     }
                     
                     {!isLogin && 

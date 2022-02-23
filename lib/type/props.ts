@@ -12,6 +12,10 @@ export type PostCardListProps = {
     postlist: PostCardProps[]
 }
 
+export type UserDropdownProps = {
+    username: String
+}
+
 export type OverrideSectionProps ={
     cardlist: CardProps[]
 }
