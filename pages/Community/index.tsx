@@ -7,25 +7,25 @@ import { PostCardProps, Response } from "../../lib/type";
 
 
 const Community = () => {
-    const [commusDetail, setCommusDetail] = useState<PostCardProps[]>([]);
-    const { token } = useLoginContext();
-    useEffect(() => {
-        useAxios(COMMUNITY_POST_QUERY, {}, token.token)
-        .then( ({ data }: Response) => {
-            const details = data.data.userPosts.map(post => {
-                const { slug, id ,tags} = post
-                const name = "string"
-                return { id, name , tags};
-            })
+    // const [commusDetail, setCommusDetail] = useState<PostCardProps[]>([]);
+    // const { token } = useLoginContext();
+    // useEffect(() => {
+    //     useAxios(COMMUNITY_POST_QUERY, {}, token.token)
+    //     .then( ({ data }: Response) => {
+    //         const details = data.data.userPosts.map(post => {
+    //             const { slug, id ,tags} = post
+    //             const name = "string"
+    //             return { id, name , tags};
+    //         })
 
-            setCommusDetail(details)
-        })
+    //         setCommusDetail(details)
+    //     })
 
-    },[])
+    // },[])
     
     return (
         <div>
-            <Stack gap={3}>
+            {/* <Stack gap={3}>
                 <Container>
                     <Row>
                         <Col
@@ -43,7 +43,9 @@ const Community = () => {
                     </Row>
                 </Container>       
                 <Posts commusDetail={ commusDetail }/>    
-            </Stack>
+            </Stack> */}
+
+            Hello welcome to community section
         </div>
     );
 }

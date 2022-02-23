@@ -3,7 +3,7 @@ import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { Posts, CommunitySection, RankingSection } from '../components' ;
-import { useDetectUser, useLayout, useAxios } from '../hooks' ;
+import { useLayout, useAxios } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
 import { HomepageProps, Response } from '../lib/type';
 

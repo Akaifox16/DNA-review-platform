@@ -12,7 +12,7 @@ const SideSection= ({ name, cardlist }: SideSectionProps) => {
                 {
                     cardlist.map(card => {
                         return (
-                            <Link href={`/community/${card.name}`}>  
+                            <Link href={`/${name === 'Ranking' ? 'user': name}/${card.name.replace(/\s/g, '-')}`}>  
                                 <Button variant="outline-primary">
                                     <Card id={card.id} name={card.name}/>
                                 </Button>
