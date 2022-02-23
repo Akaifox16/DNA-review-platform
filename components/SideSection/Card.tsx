@@ -4,7 +4,7 @@ import { CardProps } from "../../lib/type";
 
 const Card= ({ name }: CardProps) => {
     return (
-        <Container>
+        <Container class="cardContain">
             <Row>
                 {/* <Col>
                     <Image 

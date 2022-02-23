@@ -70,7 +70,7 @@ const Login = () => {
                 </div>
                 <div className="m-3">
                     <Link href="/register">
-                        Don't have account yet?
+                        Don't have an any account yet?
                     </Link>
                 </div>
             </Card.Body>
