@@ -372,3 +372,13 @@ mutation($user: UserUpdateInput!){
 	}
 }
 `
+
+export const DELETE_POST_QUERY = `
+mutation($pid: ID!){
+	deletePost(pid: $pid){
+		owner{
+			name
+		}
+	}
+}
+`

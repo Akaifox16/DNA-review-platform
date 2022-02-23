@@ -6,13 +6,15 @@ import { Dropdown, Stack } from 'react-bootstrap';
 
 import { Response, SlugProps } from "../../lib/type";
 import { useAuthChecker, useAxios, useLayout, useOwnerChecker, useUsername } from "../../hooks";
-import { POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
+import { DELETE_POST_QUERY, POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
 import { PostLDBtn, CommentSection } from "../../components";
 import styles from '../../styles/Post.module.scss' ;
+import { useRouter } from "next/router";
 
 const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : SlugProps) => {
     const [owner, setOwner] = useState(false);
     const { token } = useAuthChecker();
+    const router = useRouter();
     useEffect(()=> {
             const isOwner = useOwnerChecker(author);
             setOwner(isOwner);
@@ -38,7 +40,13 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item>Edit</Dropdown.Item>
-                                    <Dropdown.Item>Delete</Dropdown.Item>
+                                    <Dropdown.Item
+                                    onClick={e => {
+                                        useAxios(DELETE_POST_QUERY, {pid: id}, token.token)
+                                        .then(res => {
+                                            router.push('/');
+                                        })                                    }}
+                                    >Delete</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         }
