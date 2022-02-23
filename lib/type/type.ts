@@ -22,6 +22,7 @@ export type Response = {
             post: Post
             communities: Community[]
             ranking: {name: String}[]
+            commuPosts: Post[]
         }
     }
 }

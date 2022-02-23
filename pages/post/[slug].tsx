@@ -13,7 +13,7 @@ import { CommentSection } from "../../components";
 const Slug = ({ id, author, comments, content, tags } : SlugProps) => {
     const [owner, setOwner] = useState(false);
     
-    useEffect(  ()=> {
+    useEffect(()=> {
             const isOwner = useOwnerChecker(author);
             setOwner(isOwner);
     }, [])

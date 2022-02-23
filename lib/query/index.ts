@@ -19,6 +19,14 @@ query{
 }
 `;
 
+export const COMMUNITIES_QUERY =`
+query{
+	communities{
+		name
+	}
+}
+`
+
 export const POSTS_QUERY = `
 query{
 	posts {
@@ -114,11 +122,12 @@ export const COMMUNITY_POST_QUERY = `
 query($slug: String!){
 	commuPosts(slug: $slug){
 		id
+		slug
+		tags
 		owner{
+			id
 			name
 		}
-		content
-		tags
 	}
 }
 `;

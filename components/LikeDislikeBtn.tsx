@@ -1,4 +1,4 @@
-const Slug = () => {
+const LikeDislikeBtn = () => {
     return (
         <div>
             Enter
@@ -6,4 +6,4 @@ const Slug = () => {
     );
 }
 
-export default Slug;
+export default LikeDislikeBtn;
