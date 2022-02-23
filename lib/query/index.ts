@@ -21,15 +21,22 @@ query{
 
 export const COMMUNITIES_QUERY =`
 query{
-	userById{
-		id
-
+	communities{
+		name
 	}
 }
 `
+export const ALLUSER_QUERY =`
+query{
+	ranking{
+		name
+	}
+}
+`
+
 export const USER_QUERY =`
 query{
-	communities{
+	userById{
 		name
 		email
 		bio
@@ -39,6 +46,7 @@ query{
 	}
 }
 `
+
 
 export const POSTS_QUERY = `
 query{
