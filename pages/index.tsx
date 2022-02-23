@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head' ;
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Image from "next/image";
 import { Posts, CommunitySection, RankingSection } from '../components' ;
 import { useDetectUser, useLayout, useAxios } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
@@ -11,15 +11,18 @@ import styles from '../styles/Home.module.scss' ;
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   return (
-    <Container>
+    <Container className={styles.homepages}>
       <Row>
         <Col>
           <Posts postlist={ postsDetail.postlist } />
         </Col>
         <Col>
-          <Row>
-            <RankingSection
+          <Row >
+            <div className={styles.rankingSec}>
+                          <RankingSection
               cardlist={ranks} />
+            </div>
+
           </Row>
           <Row>
             <CommunitySection 

@@ -12,17 +12,12 @@ const SideSection= ({ name, cardlist }: SideSectionProps) => {
                 {
                     cardlist.map(card => {
                         return (
-<<<<<<< HEAD
-                            <Button variant="outline-primary" class="cardButtonCom">
-                                <Card id={card.id} name={card.name}/>
-                            </Button>
-=======
+                            
                             <Link href={`/community/${card.name}`}>  
-                                <Button variant="outline-primary">
+                                <Button variant="outline-primary" class="cardButtonCom">
                                     <Card id={card.id} name={card.name}/>
                                 </Button>
                             </Link>  
->>>>>>> 633ea68537dd7ea52436684e94148373654e89d7
                         )
                     })
                 }
