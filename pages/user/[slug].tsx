@@ -64,7 +64,6 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
                     {
                         edit 
                         ? <textarea
-                            type={'textarea'}
                             value={newUser.bio}
                             onChange={e => {
                                 setUser({...newUser, bio: e.target.value})
