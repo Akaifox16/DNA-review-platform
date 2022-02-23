@@ -9,11 +9,11 @@ const PostList = ({ postlist }:PostCardListProps) => {
             <Stack gap={3}>
                 {
                     postlist.map(post => {
-                        const { id, title, owner} = post
+                        const { id, title, owner, tags} = post
                         return (
                             <Link href={`/post/${title}`} > 
                                 <Button variant="outline-primary" class="postButton" >
-                                    <PostCard id={id} title={title} owner={owner} />
+                                    <PostCard id={id} title={title} owner={owner} tags={tags} />
                                 </Button>
                             </Link>
                         );

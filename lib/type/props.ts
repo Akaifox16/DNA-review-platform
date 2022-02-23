@@ -23,6 +23,7 @@ export type OverrideSectionProps ={
 export type PostCardProps = {
     id: string
     title: string
+    tags: string[]
     owner: string
 }
 

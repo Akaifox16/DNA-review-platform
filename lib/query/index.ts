@@ -44,6 +44,7 @@ export const USER_POSTS_QUERY = `
 query{
 	userPosts{
 		slug
+		tags
 		id
 	}
 }
@@ -75,6 +76,14 @@ mutation($post: PostCreateInput!){
 	}
 }
 ` ;
+
+export const EDIT_POST_QUERY = `
+mutation($post: PostUpdateInput!, $pid: ID!){
+	updatePost(pid: $pid, post: $post){
+		slug
+	}
+}
+`
 
 export const POST_BY_ID_QUERY = `
 query($slug: String!){

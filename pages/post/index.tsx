@@ -13,14 +13,11 @@ const Post = () => {
         useAxios(USER_POSTS_QUERY, {}, token.token)
         .then( ({ data }: Response) => {
             const details = data.data.userPosts.map(post => {
-                const { slug, id } = post
-    
-                return { id, title: slug, owner: token.username};
+                const { slug, id, tags } = post
+                return { id, title: slug, tags, owner: token.username};
             })
-
-            setPostsDetail(details)
+            setPostsDetail(details);
         })
-
     },[])
     
     return (
