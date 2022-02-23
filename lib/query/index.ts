@@ -95,7 +95,30 @@ mutation($comment: CommentCreateInput!){
 		owner{
 			name
 		}
+		likes{
+			owner{
+				name
+			}
+		}
+		dislikes{
+			owner{
+				name
+			}
+		}
 		content
 	}
 }
-`
+`;
+
+export const COMMUNITY_POST_QUERY = `
+query($slug: String!){
+	commuPosts(slug: $slug){
+		id
+		owner{
+			name
+		}
+		content
+		tags
+	}
+}
+`;
