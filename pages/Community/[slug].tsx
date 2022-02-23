@@ -15,8 +15,8 @@ const Slug = ({ params, posts }: Props) => {
     return (
         <div>
             {params}
-            <Stack gap={3}>
-                <Container>
+                <Stack gap={3} direction="horizontal">
+                    
                     {/* <Row>
                         <Col sm={8} />
                         <Col>
@@ -24,8 +24,8 @@ const Slug = ({ params, posts }: Props) => {
                         </Col>
                     </Row> */}
                     <Posts postlist={posts} />
-                </Container>
-            </Stack>
+                    <CommentSection />
+                </Stack>
         </div>
     );
 }
@@ -51,7 +51,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             return  {
                 id: commu.id,
                 title: commu.slug,
-                tags: commu.tags,
                 owner: commu.owner.name,
             }
         })
