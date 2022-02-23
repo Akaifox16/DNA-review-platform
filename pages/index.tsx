@@ -7,11 +7,7 @@ import { useLayout, useAxios, useSearchContext } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
 import { HomepageProps, Response } from '../lib/type';
 
-<<<<<<< HEAD
  import styles from '../styles/Home.module.scss' ;
-=======
-import styles from '../styles/Home.module.scss' ;
->>>>>>> fc5fa306729ad30c140babda870f86244299527c
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   const { filter } = useSearchContext();
