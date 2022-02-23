@@ -21,15 +21,22 @@ query{
 
 export const COMMUNITIES_QUERY =`
 query{
-	userById{
-		id
-
+	communities{
+		name
 	}
 }
 `
+export const ALLUSER_QUERY =`
+query{
+	ranking{
+		name
+	}
+}
+`
+
 export const USER_QUERY =`
 query{
-	communities{
+	userById{
 		name
 		email
 		bio
@@ -39,6 +46,7 @@ query{
 	}
 }
 `
+
 
 export const POSTS_QUERY = `
 query{
@@ -57,6 +65,7 @@ export const USER_POSTS_QUERY = `
 query{
 	userPosts{
 		slug
+		tags
 		id
 	}
 }
@@ -88,6 +97,14 @@ mutation($post: PostCreateInput!){
 	}
 }
 ` ;
+
+export const EDIT_POST_QUERY = `
+mutation($post: PostUpdateInput!, $pid: ID!){
+	updatePost(pid: $pid, post: $post){
+		slug
+	}
+}
+`
 
 export const POST_BY_ID_QUERY = `
 query($slug: String!){
