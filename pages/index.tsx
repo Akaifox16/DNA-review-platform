@@ -7,7 +7,7 @@ import { useLayout, useAxios, useSearchContext } from '../hooks' ;
 import { HOMEPAGE_QUERY } from "../lib/query";
 import { HomepageProps, Response } from '../lib/type';
 
- import styles from '../styles/Home.module.scss' ;
+import styles from '../styles/Home.module.scss' ;
 
 const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   const { filter } = useSearchContext();
@@ -16,43 +16,31 @@ const Home = ({ postsDetail, commuDetail, ranks }: HomepageProps) => {
   
   return (
     <Container className={styles.homepages}>
-
       <Row>
-        
-          <Col>
-        <div className={styles.postCard}>
-          
+        <Col>
+          <div className={styles.postCard}>
             <Posts postlist={ filter.length !== 0 
             ? postsDetail.postlist.filter(post => {
               return post.title.toLowerCase().includes(filter.toLowerCase())
             })
             : postsDetail.postlist } 
-            
-            >
-
-                          
-            </Posts>
-        </div>
-          </Col>
-
+            />        
+          </div>
+        </Col>
         <Col>
-
           <Row >
             <div className={styles.rankingSec}>
                           <RankingSection
               cardlist={ranks} />
             </div>
-
           </Row>
           <Col>
-
           </Col>
           <Row>
             <div className={styles.commuCard}>
-                         <CommunitySection 
+              <CommunitySection 
               cardlist={commuDetail} />
             </div>
- 
           </Row>
         </Col>
       </Row>

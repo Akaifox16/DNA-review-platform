@@ -15,8 +15,8 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { data: {data: {users}} }: Response = await useAxios(ALLUSER_QUERY, {}, '');
-    const paths = users.map(user => ({
+    const { data: {data: {ranking}} }: Response = await useAxios(ALLUSER_QUERY, {}, '');
+    const paths = ranking.map(user => ({
         params: {
             slug: user.name.replace(/\s/g, '-')
         }
@@ -30,6 +30,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     if(params !== undefined){
+        console.log(params)
+
         const { data: {data: { userById }} }: Response = await useAxios(USER_QUERY, {id: params.slug}, '');
         const { id, name, email, bio, contact, likes, dislikes } = userById
             

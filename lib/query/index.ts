@@ -35,8 +35,9 @@ query{
 `
 
 export const USER_QUERY =`
-query{
-	userById{
+query($id: ID!){
+	userById(id: $id){
+		id
 		name
 		email
 		bio
