@@ -1,4 +1,5 @@
 // import { ReactElement } from "react";
+import Link from "next/link";
 import { Button, Stack } from "react-bootstrap";
 import { SideSectionProps } from "../../lib/type";
 import Card from "./Card";
@@ -11,9 +12,11 @@ const SideSection= ({ name, cardlist }: SideSectionProps) => {
                 {
                     cardlist.map(card => {
                         return (
-                            <Button variant="outline-primary">
-                                <Card id={card.id} name={card.name}/>
-                            </Button>
+                            <Link href={`/community/${card.name}`}>  
+                                <Button variant="outline-primary">
+                                    <Card id={card.id} name={card.name}/>
+                                </Button>
+                            </Link>  
                         )
                     })
                 }

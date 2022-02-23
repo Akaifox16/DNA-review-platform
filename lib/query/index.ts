@@ -98,4 +98,17 @@ mutation($comment: CommentCreateInput!){
 		content
 	}
 }
-`
+`;
+
+export const COMMUNITY_POST_QUERY = `
+query($slug: String!){
+	commuPosts(slug: $slug){
+		id
+		owner{
+			name
+		}
+		content
+		tags
+	}
+}
+`;
