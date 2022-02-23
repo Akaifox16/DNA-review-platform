@@ -95,6 +95,16 @@ mutation($comment: CommentCreateInput!){
 		owner{
 			name
 		}
+		likes{
+			owner{
+				name
+			}
+		}
+		dislikes{
+			owner{
+				name
+			}
+		}
 		content
 	}
 }
