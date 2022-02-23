@@ -11,7 +11,7 @@ const SideSection= ({ name, cardlist }: SideSectionProps) => {
                 {
                     cardlist.map(card => {
                         return (
-                            <Button variant="outline-primary">
+                            <Button variant="outline-primary" class="cardButtonCom">
                                 <Card id={card.id} name={card.name}/>
                             </Button>
                         )
