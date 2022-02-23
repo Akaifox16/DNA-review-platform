@@ -183,8 +183,8 @@ query($slug: String!){
 	}
 	commuComment(slug: $slug){
 		id
-    	content
-    	owner{
+		content
+		owner{
 			name
 		}
 	}
@@ -357,6 +357,18 @@ mutation{
 		name
 		likes
 		dislikes
+	}
+}
+`
+
+export const EDIT_PROFILE_QUERY =`
+mutation($user: UserUpdateInput!){
+	updateUser(user: $user){
+		name
+		bio
+		contact
+		id
+		email
 	}
 }
 `
