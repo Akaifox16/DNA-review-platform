@@ -47,53 +47,31 @@ const CommentSection = ({ comments, pid }:CommentSectionProps ) => {
                         Login
                     </Link> first</p>
             </div>}
-<<<<<<< HEAD
-            </div>
-            <Stack>
-            <div>
-                <h4 className={styles.tt} > Comment</h4>
-            </div>
-            <div className={styles.com1} >
-                {
-                    commentList.map( (comment,index) => {
-                        const { content, owner, id } = comment;
-                        return (
-                            <div className={styles.bot} >
+            {
+                commentList.map( (comment, index) => {
+                    // const { content, owner, id } = comment;
+                    return (
+                        <div className={styles.bot} >
                                 <div >
                                     <h4 className={styles.space}>Comment {index+1}</h4>
                                 </div>
                                 <div >
-                                    <CommentCard 
-                                        id={ id }
-                                        content={ content }
-                                        owner={ owner }
+                                <CommentCard
+                                    token={token.token}
+                                    comment={
+                                        comment
+                                    } 
                                     />
                                 </div>
-                            </div>
-                        );
-                    })
-                }
-            </div>
-=======
-            {
-                commentList.map( comment => {
-                    // const { content, owner, id } = comment;
-                    return (
-                        <CommentCard
-                            token={token.token}
-                            comment={
-                                comment
-                            } 
+                        </div>
                             // id={  }
                             // content={ content }
                             // owner={ owner }
-                        />
                     );
                 })
             }
->>>>>>> 898680a109e95b88031fa266912cdf2f1460810a
-            </Stack>
-            
+            {/* </Stack> */}
+            </div>
         </div>
     );
 }

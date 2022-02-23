@@ -36,40 +36,17 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                     </Dropdown.Menu>
                 </Dropdown>
             }
-<<<<<<< HEAD
-            <div className={styles.mid} >
-                <article>
-                    <div className={styles.tag}>
-                        #{tags}
-                    </div>
-                    <ReactMarkdown className={styles.cv}
-                        children={ `${content}` }
-                       components= {{
-                            img: ({node, src, ...props}) => 
-                                                            <img className={styles.pic}
-                                                            src={src as string}
-                                                            width={700} 
-                                                            />
-                                                        
-                        }}
-                    />
-                </article>
-            </div>
-            <div>
-                
-                    <h4 className={styles.tt} > Write Comment</h4>
-            </div>
-            <div >
-                <CommentSection comments={ comments }  pid={id} />
-            </div>
-=======
             <h1>{title}</h1>
+            <div className={styles.mid} >
             <article>
+                <div className={styles.tag}>
+                    #{tags}
+                </div>
                 <ReactMarkdown className={styles.cv}
                     children={ `${content}` }
                     components= {{
                         img: ({node, src, ...props}) => <center>
-                                                        <img
+                                                        <img className={styles.pic}
                                                         src={src as string}
                                                         width={700} 
                                                         
@@ -78,14 +55,21 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                     }}
                 />
             </article>
-            <PostLDBtn 
-                owner={token.token}
-                id={id}
-                likes={likes}
-                dislikes={dislikes}
-            />
+            </div>
+            <div>
+                <PostLDBtn 
+                    owner={token.token}
+                    id={id}
+                    likes={likes}
+                    dislikes={dislikes}
+                />
+            </div>
+            <div>
+                <h4 className={styles.tt} > Write Comment</h4>
+            </div>
+            <div >
             <CommentSection comments={ comments }  pid={id} />
->>>>>>> 898680a109e95b88031fa266912cdf2f1460810a
+            </div>
         </Stack>
         </div>
 
