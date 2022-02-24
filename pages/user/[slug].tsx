@@ -37,17 +37,46 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
                             height={25}
                             ></Image>    
                         */}
-                        <h5>like {likes}</h5>
+                        <div className={styles.like}>
+                            <Image src={'/like.png'}
+                            width={25}
+                            height={25}
+                            margin-right={10}
+                            padding-right={10}
+                          
+                            >
+                           
+                            </Image>
+                            {likes}
+                            <>  </>
+                            <Image src={'/dislike.png'}
+                            width={25}
+                            height={25}
+                          >
+
+                        </Image>
+                        { dislikes}
+                        </div>
+   
+                        {/* //<h5>like {likes}</h5> */}
                     </div>
                     <div className={styles.dislikeSec}>
-                        <h5>Dislike {dislikes}</h5>
+                        {/* <Image src={'/dislike.png'}
+                            width={25}
+                            height={25}
+                          >
+
+                        </Image>
+                        { dislikes} */}
                     </div>
                 </div>
             </Stack>
             </Col>
             <Col>
                 <Row >
-                <div className={styles.userName}><h5>Username : 
+                <div className={styles.userName}>
+
+                    <h5>Username : 
                                         {edit
                     ? <input
                         className={styles.userBio}

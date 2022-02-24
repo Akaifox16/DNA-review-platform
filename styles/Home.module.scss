@@ -93,14 +93,24 @@
 }
 .userBio{
     margin-top: 10px;
+    margin: auto;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 50px;
 }
 .userName{
     background-color: #B762C1;
     height:50px;
     border-radius: 12px;
-    
+    margin: auto;
     margin-bottom: 30px;
-    padding-left: 10px;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    font-weight: bolder;
+
     //width: 20px;
 }
 .bioDetail{
@@ -144,16 +154,31 @@
     background-color: blue;
 }
 .likeSec{
-    background-color: #F5C5D5;
+    background-color: #d6d6d6;
     height: 30px;
     width: 180px;
     margin-bottom: 10px;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    border-radius: 12px;
+    font-size: 15px;
+    
+}
+.like{
+    font-size: 15px;
 }
 .dislikeSec{
     background-color: #F5C5D5;
     height: 30px;
     width: 180px;
     margin-bottom: 10px;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    border-radius: 12px;
     
 .ll{
     //margin:auto;
