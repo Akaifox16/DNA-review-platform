@@ -16,13 +16,13 @@ const Navbar = () => {
     useDetectUser();
     const username = useUsername();
 
+    console.log(isLogin)
+
     return (
         <div>
-            {/* <Container> */}
                 <div >
                     <div className={styles.dpb}>
                         <div>
-                            {/* <Col> */}
                                 <Link href='/'>
                                     {/* <button  > */}
                                     {/* <img src="https://i.imgur.com/wGqCqjJ.png" width="65" height="65" /> */}
@@ -32,75 +32,58 @@ const Navbar = () => {
                                         width={80} />
                                     {/* </button> */}
                                 </Link>
-                            {/* </Col> */}
                         </div>
-                        <div className={styles.sss}>
-                                { isLogin && 
-                                <Row className={styles.sbr}>
-                            <Stack direction="horizontal"  >
-                                <div className={styles.sb}>
+                        <div >
+                                <Row >
+                                <Stack direction="horizontal"  >
+                                <div >
                                     <Searchbar />   
                                 </div>
                         
+                                { isLogin && 
                                 <div >
-                                    {/* <Col> */}
                                         <Link href='/post'>
                                             <button className={styles.myPostCard} >
                                                 My Posts
                                             </button>
                                         </Link>
-                                    {/* </Col> */}
-    
                                 </div>
-                                <div className={styles.userButton} >
-                                    {/* <Col> */}
+                                }
+                                { isLogin &&
+                                    <div className={styles.userButton} >
                                     <Link href={`/user/${username.replace(/\s/g, '-')}`}>
                                         <button className={styles.userButton}>
                                             { username }
                                         </button>
                                     </Link>
-                                    {/* </Col>  */}
-                                </div>
-    
+                                    </div>
+                                }   
     
                                 <div className={styles.loginBut}>
-                                    {/* <Col> */}
-                                    {isLogin &&
-                                        <button className={styles.loginBut}
-                                            onClick={e => {
-                                            e.preventDefault();
-                                            removeItem(TOKEN_KEY, 'local');
-                                            router.push('/');
-                                            router.reload();
-                                        }}>
-                                            Logout
-                                        </button>
-                                            // <UserDropdown username={username}/>
-                                    }
-                            
-                                    {!isLogin && 
-                                        <Link href='/login'>
-                                            <button className="success"> 
+                                    {!isLogin 
+                                    ? (
+                                    <Link href='/login'>
+                                            <button className={styles.loginBut} > 
                                                 Login/Signup
                                             </button>
-                                            </Link>
+                                    </Link>
+                                    )
+                                    :    <button className={styles.loginBut}
+                                                onClick={e => {
+                                                e.preventDefault();
+                                                removeItem(TOKEN_KEY, 'local');
+                                                router.push('/');
+                                                router.reload();
+                                            }}>
+                                                Logout
+                                            </button>
                                     }
-                                    {/* </Col>  */}
                                 </div>
-                            
                                 </Stack>
-                            </Row>}
+                            </Row>
                         </div>
                     </div>
-                    {/* <Col xs={2}> */}
-                    {/* </Col> */}
-                    {/* <Col> */}
-    
-    
-                    {/* </Col> */}
-     
                 </div>
-            {/* </Container> */}
         </div>
     );
 }
