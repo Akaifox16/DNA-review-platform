@@ -37,6 +37,7 @@ export type Response = {
             undislikePost: Post
             commuComment: Comment[]
             updateUser: User
+            createCommuChat: Comment
         }
     }
 }

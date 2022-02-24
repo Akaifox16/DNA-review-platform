@@ -4,15 +4,27 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { Dropdown, Stack } from 'react-bootstrap';
 
-import { Response, SlugProps } from "../../lib/type";
+import { Response, SlugProps, Tag } from "../../lib/type";
 import { useAuthChecker, useAxios, useLayout, useOwnerChecker, useUsername } from "../../hooks";
-import { POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
-import { PostLDBtn, CommentSection } from "../../components";
+import { DELETE_POST_QUERY, EDIT_POST_QUERY, POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
+import { PostLDBtn, CommentSection, TagInput } from "../../components";
 import styles from '../../styles/Post.module.scss' ;
+import { useRouter } from "next/router";
+import MarkdownEditor from "../../components/MarkdownEditor";
 
 const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : SlugProps) => {
     const [owner, setOwner] = useState(false);
     const { token } = useAuthChecker();
+    const [newtags, setTags] = useState<Tag[]>(tags.map(tag=> {
+        return {
+            id: tag,
+            text: tag
+        }
+    }));
+    const [newTitle, setTitle] = useState(title);
+    const [newContent, setContent] = useState<string | undefined>(content)
+    const [edit, setEdit] = useState(false);
+    const router = useRouter();
     useEffect(()=> {
             const isOwner = useOwnerChecker(author);
             setOwner(isOwner);
@@ -24,11 +36,19 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
             <div className={styles.mid} >
                 <div className={styles.inl} >
                     <div>
-                        <h1 className={styles.tag}>{title}</h1>
+                        {
+                            edit
+                            ? <input
+                            value={newTitle} 
+                            onChange={e => {
+                                setTitle(e.target.value)
+                            }} />
+                            :  <h1 className={styles.tag}>{title}</h1>
+                        }
                     </div>
                     <div className={styles.ed} >
                         {
-                            owner && 
+                            (owner && !edit) &&
                             <Dropdown>
                                 <Dropdown.Toggle>
                                     <Image 
@@ -37,8 +57,19 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                                     height={20} />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Edit</Dropdown.Item>
-                                    <Dropdown.Item>Delete</Dropdown.Item>
+                                    <Dropdown.Item
+                                    onClick={e => {
+                                        setEdit(true);
+                                    }}
+                                    >Edit</Dropdown.Item>
+                                    <Dropdown.Item
+                                    onClick={e => {
+                                        useAxios(DELETE_POST_QUERY, {pid: id}, token.token)
+                                        .then(res => {
+                                            router.push('/');
+                                        })                                    
+                                    }}
+                                    >Delete</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         }
@@ -50,27 +81,65 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                 </div>
             <article>
                 <div className={styles.tag}>
-                    #{tags}
+                    {/* #{tags} */}
+                    {edit
+                    ? <TagInput 
+                        tags={newtags}
+                        setTags={setTags}
+                    />
+                    : tags.map(tag => {
+                        return '#' + tag;
+                    }).join(' ')
+                    }
                 </div>
-                <ReactMarkdown className={styles.cv}
-                    children={ `${content}` }
-                    components= {{
-                        img: ({node, src, ...props}) => 
-                                                        <img className={styles.pic}
-                                                        src={src as string}
-                                                        width={700} 
-                                                        
-                                                        />
-                                                        
-                    }}
-                />
+                {
+                    edit
+                    ? <MarkdownEditor
+                        value={newContent} height={640}
+                        confirmText="save change"
+                        setValue={ setContent }
+                        onClickCancel={e => {
+                            e.preventDefault();
+                            setEdit(false);
+                        }}
+                        onClickSuccess={e => {
+                            e.preventDefault();
+                            useAxios(EDIT_POST_QUERY, {
+                                post: {
+                                    slug: newTitle.replace(/\s/g, '-'),
+                                    content: newContent,
+                                    tags: newtags.map(tag=> tag.text)
+                                },
+                                pid: id,
+                            }, token.token)
+                            .then(res => {
+                                setEdit(false);
+                                router.push(`/post/${newTitle.replace(/\s/g, '-')}`);
+                                router.reload();
+                            })
+                        }}
+                    />
+                    : <ReactMarkdown className={styles.cv}
+                        children={ `${content}` }
+                        components= {{
+                            img: ({node, src, ...props}) => 
+                                                            <img className={styles.pic}
+                                                            src={src as string}
+                                                            width={700} 
+                                                            
+                                                            />
+                                                            
+                        }}
+                    />
+
+                }
             <div className={styles.like}>
-                <PostLDBtn 
+                {!edit && <PostLDBtn 
                     owner={token.token}
                     id={id}
                     likes={likes}
                     dislikes={dislikes}
-                />
+                />}
             </div>
             </article>
             </div>

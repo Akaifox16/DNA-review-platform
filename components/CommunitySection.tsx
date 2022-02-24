@@ -3,7 +3,7 @@ import SideSection from "./SideSection";
 
 const CommunitySection = ({ cardlist }: OverrideSectionProps) => {
     return (
-        <SideSection name='Community' cardlist={cardlist} class="commu"/>
+        <SideSection name='Community' cardlist={cardlist} />
     );
 }
 

@@ -185,6 +185,7 @@ query($slug: String!){
 		id
 		content
 		owner{
+			id
 			name
 		}
 	}
@@ -369,6 +370,28 @@ mutation($user: UserUpdateInput!){
 		contact
 		id
 		email
+	}
+}
+`
+
+export const DELETE_POST_QUERY = `
+mutation($pid: ID!){
+	deletePost(pid: $pid){
+		owner{
+			name
+		}
+	}
+}
+`
+
+export const CREATE_COMMU_CHAT_QUERY = `
+mutation($comment: CommentCreateInput!){
+	createCommuChat(comment: $comment){
+		id
+		content
+		owner{
+			name
+		}
 	}
 }
 `
