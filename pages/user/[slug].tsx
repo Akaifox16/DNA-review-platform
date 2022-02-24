@@ -26,7 +26,7 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
             <Stack>
                 <div className={styles.proCard}>
                     <Image 
-                            src={'/favicon.ico'}
+                            src={'/profile.png'}
                             width={165}
                             height={165} />
                     <div className={styles.likeSec}>
@@ -47,33 +47,45 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
             </Col>
             <Col>
                 <Row >
-                <div className={styles.userName}>
-
-                    {edit
+                <div className={styles.userName}><h5>Username : 
+                                        {edit
                     ? <input
+                        className={styles.userBio}
                         onChange={e => {
                             setUser({...newUser, name: e.target.value})
                         }}
                         value={newUser.name}
                         />
                     : name}
+                </h5>
+
+
                 </div>
                 </Row>
                 <Row>
                 <div className={styles.bioDetail}>
-                    {
+                    <h5> Description :
+                                            {
+                        
+                            
                         edit 
+                        
                         ? <textarea
+                            className={styles.bioDe}
+                           
                             value={newUser.bio}
                             onChange={e => {
                                 setUser({...newUser, bio: e.target.value})
                             }}
                             />
                         : <textarea
+                            className={styles.bioDefront}
                             disabled={true}
                             value={newUser.bio}
                             />
                     }
+                    </h5>
+
                 </div>
                 </Row>
                 <Row>
@@ -87,7 +99,7 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
                 <Row>
                     {
                         owner && (edit 
-                        ? <button
+                        ? <button className={styles.b1F}
                             onClick={e => {
                                 e.preventDefault();
                                 useAxios(EDIT_PROFILE_QUERY, {user: newUser}, token.token)
@@ -102,7 +114,7 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
                         >
                             save profile
                         </button>
-                        : <button
+                        : <button className={styles.b1B}
                             onClick={e => {
                                 e.preventDefault();
                                 setEdit(true);
@@ -112,6 +124,11 @@ const Slug = ({id, name, email, bio, contact, likes, dislikes }: Props) => {
                         </button>)
                     }
                 </Row>
+                {/* <Row>
+                    <div className={styles.email}>
+                        {email}
+                    </div>
+                </Row> */}
             </Col>
             </Row>
         </Container>
