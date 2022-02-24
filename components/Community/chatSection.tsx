@@ -36,7 +36,7 @@ const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
                 isLogin && 
                 <MarkdownEditor
                     value={ value } height={200}
-                    confirmText="Comment"
+                    confirmText="Send"
                     setValue={ setValue }
                     onClickCancel={e => {
                         e.preventDefault();

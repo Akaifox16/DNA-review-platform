@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Col, Container, Row, Stack } from "react-bootstrap";
+import { Card, Col, Container, Row, Stack } from "react-bootstrap";
 import { CommentSection, Posts } from "../../components";
 import ChatSection from "../../components/Community/chatSection";
 import { useAxios, useLayout } from "../../hooks";
@@ -25,7 +25,13 @@ const Slug = ({ params, posts, comment }: Props) => {
 
                         </Col>
                     </Row> */}
-                    <Posts postlist={posts} />
+                    {
+                        posts.length > 0
+                        ? <Posts postlist={posts} />
+                        : <Card >
+                            No post in this community yet
+                        </Card>
+                    }
                     <ChatSection comments={comment} pid={params} />
                 </Stack>
         </div>
