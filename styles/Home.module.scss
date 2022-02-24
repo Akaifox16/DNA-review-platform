@@ -63,30 +63,24 @@
 }
 .cardContain:hover{
     
-    color:#000000;
+    color:#d6d6d6;
 
-}
-.allpostCard{
-    background-color: white;
-    border-radius: 12px;
 }
 .Show{
     background-color: white;
-    color:black;
     border:none
-    
 }
 .homepages{
     background-color: #d6d6d6;
 }
 .rankingSec{
-    padding: 10px;
+    padding: 5px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;
 }
 .commuCard{
-    padding: 10px;
+    padding: 5px;
     background-color: #B762C1;
     border-radius: 12px;
     margin-bottom: 30px;
@@ -97,17 +91,57 @@
     height:100px;
     border-radius: 12px;
 }
+.userBio{
+    margin-top: 10px;
+}
 .userName{
     background-color: #B762C1;
     height:50px;
     border-radius: 12px;
+    
     margin-bottom: 30px;
+    padding-left: 10px;
     //width: 20px;
 }
 .bioDetail{
     background-color: #B762C1;
-    height:50px;
+    height:250px;
+    
+    color:black;
     border-radius: 12px;
+    margin-bottom: 20px;
+}
+.bioDe{
+    background-color: #F5C5D5;
+    margin-top: 5px;
+    height:200px;
+    width: 600px;
+    
+    color:black;
+    border-radius: 12px;
+}
+.bioDefront{
+    background-color: #F5C5D5;
+    margin-top: 5px;
+    height:200px;
+    width: 600px;
+    
+    color:black;
+    border-radius: 12px;
+}
+.b1F{
+    border-radius: 12px;
+}
+.b1F:hover{
+    border-radius: 12px;
+    background-color: red;
+}
+.b1B{
+    border-radius: 12px;
+}
+.b1B:hover{
+    border-radius: 12px;
+    background-color: blue;
 }
 .likeSec{
     background-color: #F5C5D5;
@@ -144,4 +178,18 @@
     border-radius: 15px;
     color :#d6d6d6;
 }
+
+// .bioDetail{
+//     background-color: #F9C5D5;
+//     margin-left: 517px;
+//     margin-top: 229px;
+// }
+
+// .email{
+//     background-color: #B762C1;
+//     height:50px;
+//     border-radius: 12px;
+//     margin-bottom: 30px;
+// }
+
 }
