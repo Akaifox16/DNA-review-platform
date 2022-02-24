@@ -15,22 +15,11 @@ const Register = () => {
 
 
     return (
-        <div className="m-5">
-        {
-            alert.show && alert.success &&<Alert  variant="success">
-            {alert.message}
-            </Alert>
-        }
-        {
-            alert.show && !alert.success && <Alert  variant="danger">
-            {alert.message}
-            </Alert>
-        }
-        <Card className="text-center">
-            <Card.Body>
-                <Card.Title><h1>Register</h1></Card.Title>
+        <div className="m-5 p-4">
+        <div className="text-center m-5">
+                <h1>Register</h1>
                 <div className="mx-md-5" >
-                    <Form>
+                    <div className="m-3">
                         <Input 
                             controlId="floatingUsername"
                             label="Username"
@@ -41,6 +30,8 @@ const Register = () => {
                                 }
                             }
                         />
+                    </div>
+                    <div className="m-3">
                         <Input 
                             controlId="floatingEmail"
                             label="Email"
@@ -51,6 +42,8 @@ const Register = () => {
                                 }
                             }
                         />
+                    </div>
+                    <div className="m-3">
                         <Input 
                             controlId="floatingPassword"
                             label="Password"
@@ -61,6 +54,8 @@ const Register = () => {
                                 }
                             }
                         />
+                    </div>
+                    <div className="m-3">
                         <Input 
                             controlId="floatingConfirmationPassword"
                             label="Confirm Password"
@@ -75,7 +70,8 @@ const Register = () => {
                                 }
                             }
                         />
-                    <div className="m-3">
+                    </div>
+                    <div className="m-5">
                         <Button 
                         variant="success" 
                         type= "submit" 
@@ -97,10 +93,8 @@ const Register = () => {
                             </Button>
                         </Link>
                     </div>
-                    </Form>
                 </div>
-            </Card.Body>
-        </Card>
+        </div>
     </div>
     );
 }

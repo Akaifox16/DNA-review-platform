@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useAlert, useLogin } from "../hooks";
 import { Input } from "../components";
 
+import styles from '../styles/Auth.module.scss';
+
 const Login = () => {
     const [user, setUser] = useState({
         email: "",
@@ -15,21 +17,11 @@ const Login = () => {
     
     return (            
     <div className="m-5">
-        {
-            alert.show && alert.success &&<Alert  variant="success">
-            {alert.message}
-            </Alert>
-        }
-        {
-            alert.show && !alert.success && <Alert  variant="danger">
-            {alert.message}
-            </Alert>
-        }
-        <Card className="text-center">
-            <Card.Body>
-                <Card.Title><h1>Login</h1></Card.Title>
+        <div className="text-center m-5 p-4">
+                <h1>Login</h1>
                 <div className="mx-md-5" >
-                    <Form>
+                    {/* <Form> */}
+                        <div className="m-3">
                         <Input 
                             controlId="floatingEmail"
                             label="Email"
@@ -38,6 +30,8 @@ const Login = () => {
                                 setUser({...user, email: e.target.value});
                             }}
                         />
+                        </div>
+                        <div className="m-3">
                         <Input 
                             controlId="floatingPassword"
                             label="Password"
@@ -46,11 +40,12 @@ const Login = () => {
                                 setUser({...user, password: e.target.value});
                             }}
                         />
-                    </Form>
+                        </div>
+                    {/* </Form> */}
                 </div>
                 <div className="m-3">
                     <Button 
-                    variant="success" 
+                    className={styles.btn}
                     type= "submit" 
                     size = "lg" 
                     onClick={e => {
@@ -68,13 +63,12 @@ const Login = () => {
                         </Button>
                     </Link>
                 </div>
-                <div className="m-3">
+                <div>
                     <Link href="/register">
                         Don't have an any account yet?
                     </Link>
                 </div>
-            </Card.Body>
-        </Card>
+            </div>
     </div>
     );
 }
