@@ -16,7 +16,7 @@ const PostCard = ({ owner, tags, title }: PostCardProps) => {
                 
                 
                 <Stack gap={3}>
-                <div>Product Name: { title }</div>
+                <div>{ title }</div>
                 <div>Tag: {tags.join(' ')}</div>
                 <div>Reviewer: { owner }</div>
                 </Stack>
