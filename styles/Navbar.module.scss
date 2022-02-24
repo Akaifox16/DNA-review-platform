@@ -1,16 +1,78 @@
 @import "./global_variable/themes";
 @import "./global_variable/shadow";
 
+.myPostCard{
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color :black;
+    background-color: #d6d6d6;
+    margin-left: 260px;
+}
+.myPostCard:hover{
+    
+}
+
+.userButton{
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color :black;
+    background-color: #d6d6d6;
+    margin-left: 10px;
+    border-radius: 12px;
+}
+.sbr{
+    // width: 30%;
+    position: absolute;
+    top: 25px;
+    
+    right: 25px;
+}
+.sb{
+    position: absolute;
+}
+.hs{
+    background-color: #d6d6d6;
+}
+.hs:hover{
+    cursor: pointer;
+}
+.dpb{
+    display: inline-flex;
+    margin-right: 10%;
+}
+.dpb1{
+    position: absolute;
+    display: inline-flex;
+
+}
 .container{
     position: absolute;
+    border: none;
+    font-size: x-large;
+    color :black;
+    background-color: #d6d6d6;
     left: 0%;
     right: 0%;
     top: 0%;
     bottom: 0%;
-    background: $first-color;
+    //background: $first-color;
     box-shadow: $box-shadow;
 }
-
+.loginBut{
+    background-color: #d6d6d6;
+    border: none;
+    font-size: x-large;
+    font-size: 20px;
+    font-weight: bold;
+    color :rgb(255, 0, 0);
+    background-color: #d6d6d6;
+    margin-left: 20px;
+}
+.loginBut.nohover{
+    pointer-events: none;
+}
 .logo{
     position: absolute;
     left: 1.04%;
@@ -34,7 +96,10 @@
     right: 16.67%;
     top: 16.33%;
     bottom: 18.37%;
-
+    border: none;
+    font-size: x-large;
+    color :black;
+    background-color: #d6d6d6;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
@@ -43,6 +108,7 @@
     align-items: center;
 
     color: $header-font-color;
+    border:none;
 }
 
 .point{
@@ -68,8 +134,12 @@
     right: 2.36%;
     top: 16.33%;
     bottom: 18.37%;
-
+    border: none;
+    font-size: x-large;
+    color :black;
+    background-color: #d6d6d6;
     background: $second-color;
+    border: none;
 }
 
 .img{

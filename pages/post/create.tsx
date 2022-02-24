@@ -6,7 +6,7 @@ import { Tag } from "react-tag-input";
 import { Input, TagInput } from "../../components";
 import MarkdownEditor from "../../components/MarkdownEditor";
 import { useCreatePost, useLayout, useAuthChecker } from "../../hooks";
-
+import styles from '../../styles/Post.module.scss' ;
 const CreatePost = () => {
     const [value, setValue] = useState<string | undefined>('');
     const [title, setTitle] = useState<string>('');
@@ -17,11 +17,18 @@ const CreatePost = () => {
     const post = useCreatePost();
 
     return (
-        <Card>
-            <Card.Title><h1>Create your review</h1></Card.Title>
+        <div className={styles.ct}>
+            {/* <Card  > */}
+                <div  >
+                    <div className={styles.tiCard}>
+                {/* <Card.Title ><h1>Create your review</h1></Card.Title> */}
+                <h1 className={styles.sen} >Create Rewiew</h1>
+            </div>
+            
             <div>
-                <Form>
-                    <Input 
+                <Form >
+                    <div >
+                        <Input 
                         controlId="floatingTitle"
                         label="Title"  
                         type="text"
@@ -29,11 +36,13 @@ const CreatePost = () => {
                             setTitle(e.target.value);
                         }}
                     />
-                    <TagInput 
+                    </div>
+
+                    <TagInput
                         tags={tags}
                         setTags={setTags}
                     />
-                    <h3>Write your content</h3>
+                    <h3 className={styles.space1}>Write your content</h3>
                     <MarkdownEditor 
                         value={value} height={620}
                         confirmText="Post"
@@ -49,8 +58,12 @@ const CreatePost = () => {
                         }}
                     />
                 </Form>
-            </div>
-        </Card>
+            </div> 
+                </div>
+           
+        {/* </Card> */}
+        </div>
+        
     );
 };
 

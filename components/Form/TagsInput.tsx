@@ -1,6 +1,6 @@
 import { WithContext as ReactTags } from "react-tag-input";
 import { TagsInputProps, Tag } from '../../lib/type';
-
+import styles from '../../styles/Post.module.scss' ;
 const KeyCodes = {
     comma: 188,
     enter: 13
@@ -26,7 +26,7 @@ const TagsInput = ({tags, setTags }: TagsInputProps) => {
     };
 
     return (
-        <div>
+        <div className={styles.tg}>
             <ReactTags 
                 tags={tags}
                 delimiters={delimiters}

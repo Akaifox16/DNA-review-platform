@@ -1,5 +1,5 @@
 .bar{
-    position: absolute;
+    position: fixed;
     left: 14.17%;
     right: 26.74%;
     top: 16.33%;
@@ -23,19 +23,20 @@
     border: 0;
     outline: 0;
     background: none;
-    width: 0;
+    width: 200px;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
+    padding-bottom: 5px;
+    // transition: width 0.4s linear;
     }
   
 .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 450px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-  
+//     padding: 0 10px;
+//     width: 200px;
+    caret-color:rgb(0, 0, 0);
+    //     // transition: width 0.4s ease-in-out;
+}
+
 .searchbar:hover > .search_icon{
     background: white;
     color: #e74c3c;
