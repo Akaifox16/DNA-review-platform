@@ -6,7 +6,7 @@ import { Dropdown, Stack } from 'react-bootstrap';
 
 import { Response, SlugProps, Tag } from "../../lib/type";
 import { useAuthChecker, useAxios, useLayout, useOwnerChecker, useUsername } from "../../hooks";
-import { DELETE_POST_QUERY, POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
+import { DELETE_POST_QUERY, EDIT_POST_QUERY, POSTS_QUERY, POST_BY_ID_QUERY } from "../../lib/query";
 import { PostLDBtn, CommentSection, TagInput } from "../../components";
 import styles from '../../styles/Post.module.scss' ;
 import { useRouter } from "next/router";
@@ -39,7 +39,7 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                         {
                             edit
                             ? <input
-                            value={title} 
+                            value={newTitle} 
                             onChange={e => {
                                 setTitle(e.target.value)
                             }} />
@@ -67,7 +67,8 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                                         useAxios(DELETE_POST_QUERY, {pid: id}, token.token)
                                         .then(res => {
                                             router.push('/');
-                                        })                                    }}
+                                        })                                    
+                                    }}
                                     >Delete</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -94,16 +95,28 @@ const Slug = ({ id, author, comments, content, tags, likes, dislikes, title } : 
                 {
                     edit
                     ? <MarkdownEditor
-                        value={content} height={640}
+                        value={newContent} height={640}
                         confirmText="save change"
                         setValue={ setContent }
                         onClickCancel={e => {
+                            e.preventDefault();
                             setEdit(false);
                         }}
                         onClickSuccess={e => {
                             e.preventDefault();
-
-                            setEdit(false);
+                            useAxios(EDIT_POST_QUERY, {
+                                post: {
+                                    slug: newTitle.replace(/\s/g, '-'),
+                                    content: newContent,
+                                    tags: newtags.map(tag=> tag.text)
+                                },
+                                pid: id,
+                            }, token.token)
+                            .then(res => {
+                                setEdit(false);
+                                router.push(`/post/${newTitle.replace(/\s/g, '-')}`);
+                                router.reload();
+                            })
                         }}
                     />
                     : <ReactMarkdown className={styles.cv}
