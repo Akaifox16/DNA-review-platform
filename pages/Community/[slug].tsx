@@ -26,7 +26,7 @@ const Slug = ({ params, posts, comment }: Props) => {
                         </Col>
                     </Row> */}
                     <Posts postlist={posts} />
-                    <ChatSection comments={comment} pid={""} />
+                    <ChatSection comments={comment} pid={params} />
                 </Stack>
         </div>
     );

@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Stack } from "react-bootstrap";
-import { useAuthChecker, useCreateComment } from "../../hooks";
+import { useAuthChecker, useAxios, useCreateComment } from "../../hooks";
 import useCreateCommuComment from "../../hooks/Post/Comment/useCreateCommuComment";
-import { CommentSectionProps } from "../../lib/type";
+import { CREATE_COMMU_CHAT_QUERY } from "../../lib/query";
+import { CommentSectionProps, Response } from "../../lib/type";
 import MarkdownEditor from "../MarkdownEditor";
 import CommentCard from "../Post/CommentSection/CommentCard";
+import ChatCard from "./ChatCard";
 
 
 const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
@@ -18,14 +20,17 @@ const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
         <div>
             <Stack>
             {
-                // commentList.map( comment => {
-                //     const { content, owner, id } = comment;
-                //     return (
-                //         <CommentCard 
-                            
-                //         />
-                //     );
-                // })
+                commentList.map( comment => {
+                    const { content, owner, id } = comment;
+                    return (
+                        <div key={id}>
+                            <ChatCard
+                                owner={owner}
+                                content={content}
+                            />
+                        </div>
+                    );
+                })
             }
             {
                 isLogin && 
@@ -39,14 +44,14 @@ const ChatSection = ({ comments, pid }:CommentSectionProps ) => {
                     }}
                     onClickSuccess={e => {
                         e.preventDefault();
-                        createComment({ belongsTo: pid,
+                        useAxios(CREATE_COMMU_CHAT_QUERY ,{comment: { belongsTo: pid,
                             content: value === undefined
                                     ? ''
-                                    : value },
+                                    : value }},
                             token.token )
-                        .then(comment => {
-                            setComment([...commentList, comment]);
-                            console.log(commentList);
+                        .then(({ data: {data: { createCommuChat }} }:Response) => {
+                            const { content, owner: {name} } = createCommuChat;
+                            setComment([...commentList, {content, owner: name}]);
                             setValue('');
                         })
                     }}
