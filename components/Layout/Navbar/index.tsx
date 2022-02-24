@@ -21,8 +21,8 @@ const Navbar = () => {
     return (
         <div>
                 <div >
-                    <div className={styles.dpb}>
-                        <div>
+                    <div className={styles.gridContainer}>
+                        <div className={styles.gridLogo}>
                                 <Link href='/'>
                                     {/* <button  > */}
                                     {/* <img src="https://i.imgur.com/wGqCqjJ.png" width="65" height="65" /> */}
@@ -33,15 +33,20 @@ const Navbar = () => {
                                     {/* </button> */}
                                 </Link>
                         </div>
-                        <div >
-                                <Row >
-                                <Stack direction="horizontal"  >
-                                <div >
+                        {/* <div className={styles.gridContainer}> */}
+                                {/* <Row > */}
+                                {/* <Stack direction="horizontal"  > */}
+                                {   isLogin
+                                    ? <div className={styles.gridSearch}>
                                     <Searchbar />   
-                                </div>
+                                    </div>
+                                    : <div className={styles.gridSearchNoAuth}>
+                                        <Searchbar />
+                                    </div>
+                                }
                         
                                 { isLogin && 
-                                <div >
+                                <div className={styles.gridPosts}>
                                         <Link href='/post'>
                                             <button className={styles.myPostCard} >
                                                 My Posts
@@ -50,7 +55,7 @@ const Navbar = () => {
                                 </div>
                                 }
                                 { isLogin &&
-                                    <div className={styles.userButton} >
+                                    <div className={styles.gridUsername} >
                                     <Link href={`/user/${username.replace(/\s/g, '-')}`}>
                                         <button className={styles.userButton}>
                                             { username }
@@ -58,8 +63,7 @@ const Navbar = () => {
                                     </Link>
                                     </div>
                                 }   
-    
-                                <div className={styles.loginBut}>
+                                <div className={styles.gridLogin}>
                                     {!isLogin 
                                     ? (
                                     <Link href='/login'>
@@ -79,9 +83,9 @@ const Navbar = () => {
                                             </button>
                                     }
                                 </div>
-                                </Stack>
-                            </Row>
-                        </div>
+                                {/* </Stack> */}
+                            {/* </Row> */}
+                        {/* </div> */}
                     </div>
                 </div>
         </div>

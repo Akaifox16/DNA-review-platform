@@ -145,3 +145,34 @@
 .img{
     border-radius: 0 px ;
 }
+
+.gridContainer{
+    display: grid;
+}
+
+.gridSearch{
+    grid-column: 7/9;
+}
+
+.gridSearchNoAuth{
+    grid-column: 11/13;
+}
+
+.gridPosts{
+    padding: 5%;
+    grid-column: 11;
+}
+
+.gridUsername{
+    padding: 10%;
+    grid-column: 12;
+}
+
+.girdLogo{
+    grid-column: 1/4;
+}
+
+.gridLogin{
+    padding: 10%;
+    grid-column: 13;
+}
